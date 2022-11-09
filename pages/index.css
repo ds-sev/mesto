@@ -7,19 +7,25 @@
 @import url('../blocks/page/page.css');
 @import url('../blocks/wrapper/wrapper.css');
 @import url('../blocks/separator/separator.css');
+@import url('../blocks/button/button.css');
 
 /*=====HEADER=====*/
 
 @import url('../blocks/header/__position/header__position.css');
 @import url('../blocks/header/__logo/header__logo.css');
 
+/*=====PROFILE=====*/
 
-
-
-
-
-
-
+@import url('../blocks/profile/profile.css');
+@import url('../blocks/profile/__position/profile__position.css');
+@import url('../blocks/profile/__photo/profile__photo.css');
+@import url('../blocks/profile/__name-container/profile__name-container.css');
+@import url('../blocks/profile/__name/profile__name.css');
+@import url('../blocks/profile/__about/profile__about.css');
+@import url('../blocks/profile/__button-add/profile__button-add.css');
+@import url('../blocks/profile/__button-add-icon/profile__button-add-icon.css');
+@import url('../blocks/profile/__button-edit/profile__button-edit.css');
+@import url('../blocks/profile/__button-add-icon/profile__button-add-icon.css');
 
 
 
