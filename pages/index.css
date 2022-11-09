@@ -1,30 +1,27 @@
 @import url('../vendor/normalize.css');
 @import url('../vendor/fonts/fonts.css');
 
-.body {
-  font-family: 'Inter', sans-serif;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  text-rendering: optimizeLegibility;
-  background-color: black;
-}
+/*=====GLOBAL=====*/
 
-.page {
-  margin: 0 auto;
-  min-width: 320px;
-  max-width: 1280px;
-  min-height: 100vh;
-  border: 1px solid red;
-}
+@import url('../blocks/body/body.css');
+@import url('../blocks/page/page.css');
+@import url('../blocks/wrapper/wrapper.css');
+@import url('../blocks/separator/separator.css');
 
-.wrapper {
-  margin: 0 auto;
-  max-width: 880px;
-  padding-left: 15px;
-  padding-right: 15px;
-  box-sizing: content-box;
-  border: 1px solid red;
-}
+/*=====HEADER=====*/
+
+@import url('../blocks/header/__position/header__position.css');
+@import url('../blocks/header/__logo/header__logo.css');
+
+
+
+
+
+
+
+
+
+
+
+
+
