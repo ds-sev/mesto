@@ -1,2 +1,30 @@
 @import url('../vendor/normalize.css');
 @import url('../vendor/fonts/fonts.css');
+
+.body {
+  font-family: 'Inter', sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  background-color: black;
+}
+
+.page {
+  margin: 0 auto;
+  min-width: 320px;
+  max-width: 1280px;
+  min-height: 100vh;
+  border: 1px solid red;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 880px;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: content-box;
+  border: 1px solid red;
+}
