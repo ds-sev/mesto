@@ -28,6 +28,68 @@
 @import url('../blocks/profile/__button-add-icon/profile__button-add-icon.css');
 
 
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+  grid-auto-rows: auto;
+}
+
+@media screen and (max-width: 712px) {
+  .cards {
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.card {
+  margin: 0;
+  max-width: 340px;
+  max-height: 430px;
+
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.card__image {
+
+  width: 100%;
+
+  object-fit: cover;
+}
+.card__info {
+  margin-top: -4px;
+  padding: 0 21px;
+  min-height: 79px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  color: black;
+}
+
+.card__icon-like:hover {
+  opacity: .5;
+}
+
+.card__icon-like:active {
+  opacity: unset;
+  background-image: url('../images/buttons/heart_active.svg');
+}
 
 
 

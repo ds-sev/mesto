@@ -7,3 +7,8 @@
   border: none;
   background-color: transparent;
 }
+
+.button:hover {
+  opacity: .6;
+  cursor: pointer;
+}
