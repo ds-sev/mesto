@@ -31,7 +31,8 @@
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 17px;
+  column-gap: 17px;
+  row-gap: 20px;
   grid-auto-rows: auto;
 }
 
@@ -90,6 +91,37 @@
   opacity: unset;
   background-image: url('../images/buttons/heart_active.svg');
 }
+
+.footer {
+  padding-top: 66px;
+  padding-bottom: 60px;
+}
+
+@media screen and (max-width: 544px) {
+  .footer {
+    padding-top: 48px;
+    padding-bottom: 36px;
+  }
+}
+
+
+
+
+.footer__copyright {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #545454;
+}
+
+@media screen and (max-width: 544px) {
+  .footer__copyright {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
 
 
 
