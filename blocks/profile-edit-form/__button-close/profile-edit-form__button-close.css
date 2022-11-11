@@ -1,0 +1,14 @@
+.profile-edit-form__button-close {
+  width: 32px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+}
+
+@media screen and (max-width: 544px) {
+  .profile-edit-form__button-close {
+    width: 20px;
+    top: -35px;
+    right: 0;
+  }
+}

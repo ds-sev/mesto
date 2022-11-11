@@ -1,0 +1,13 @@
+.popup__container {
+  min-height: 330px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 195px 19px;
+}
+
+@media screen and (max-width: 544px) {
+  .popup__container {
+    padding-top: 123px;
+  }
+}

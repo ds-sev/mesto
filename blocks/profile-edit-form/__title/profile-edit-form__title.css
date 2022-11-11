@@ -1,0 +1,15 @@
+.profile-edit-form__title {
+  margin: 0 0 38px;
+  color: black;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+}
+
+@media screen and (max-width: 544px) {
+  .profile-edit-form__title {
+    margin-bottom: 65px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
