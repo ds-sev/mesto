@@ -1,0 +1,13 @@
+.card__button-like {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: ease-out .2s;
+}
+
+.card__button-like:hover {
+  transition: ease-in .1s;
+  opacity: .5;
+}

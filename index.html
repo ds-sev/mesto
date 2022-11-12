@@ -16,7 +16,7 @@
     <div class="page">
       <!-----HEADER----->
       <header class="header header__position wrapper">
-        <img src="./images/logo/logo.svg" alt="логотип" class="header__logo">
+        <img src="./images/logo/logo.svg" alt="логотип" class="header__logo" id="start">
       </header>
       <div class="separator"></div>
       <main class="content">
@@ -39,65 +39,70 @@
         <section class="cards wrapper">
           <figure class="card">
             <img src="./images/cards/phiol-min.jpeg" class="card__image" alt="вид на морской берег среди скалистой местности мыса Фиолент">
-            <figcaption class="card__info"><h2 class="card__title">Фиолент</h2>
-              <button class="button">
-                <img src="images/buttons/heart.svg" class="card__icon-like" alt="Иконка в виде сердца"></button>
+            <figcaption class="card__info"><h2 class="card__title">Севастополь</h2>
+              <button class="card__button-like card__button-like_hover">
+                <img src="images/buttons/heart.svg" alt="Иконка в виде сердца"></button>
             </figcaption>
           </figure>
           <figure class="card">
             <img src="./images/cards/alupka-min.jpeg" class="card__image" alt="Дворец Воронцова в Алупке">
             <figcaption class="card__info"><h2 class="card__title">Алупка</h2>
-              <img src="images/buttons/heart.svg" class="card__icon-like" alt="Иконка в виде сердца">
+              <button class="card__button-like card__button-like_hover">
+                <img src="images/buttons/heart.svg" alt="Иконка в виде сердца"></button>
             </figcaption>
           </figure>
           <figure class="card">
             <img src="./images/cards/belogorsk-min.jpeg" class="card__image" alt="Белая скала, возвышающаяся среди равнины">
             <figcaption class="card__info"><h2 class="card__title">Белогорск</h2>
-              <img src="images/buttons/heart.svg" class="card__icon-like" alt="Иконка в виде сердца">
+              <button class="card__button-like card__button-like_hover">
+                <img src="images/buttons/heart.svg" alt="Иконка в виде сердца"></button>
             </figcaption>
           </figure>
           <figure class="card">
             <img src="./images/cards/ai-min.jpeg" class="card__image" alt="вид с горы на лес и море">
             <figcaption class="card__info"><h2 class="card__title">Ай-Петри</h2>
-              <img src="images/buttons/heart.svg" class="card__icon-like" alt="Иконка в виде сердца">
+              <button class="card__button-like card__button-like_hover">
+                <img src="images/buttons/heart.svg" alt="Иконка в виде сердца"></button>
             </figcaption>
           </figure>
           <figure class="card">
             <img src="./images/cards/yalta_big-min.jpeg" class="card__image" alt="Замок Ласточкино Гнездо">
             <figcaption class="card__info"><h2 class="card__title">Ялта</h2>
-              <img src="images/buttons/heart.svg" class="card__icon-like" alt="Иконка в виде сердца">
+              <button class="card__button-like card__button-like_hover">
+                <img src="images/buttons/heart.svg" alt="Иконка в виде сердца"></button>
             </figcaption>
           </figure>
           <figure class="card">
             <img src="./images/cards/kokteb-min.jpeg" class="card__image" alt="мыс Хамелеон неподалеку от поселка Коктебель">
             <figcaption class="card__info"><h2 class="card__title">Коктебель</h2>
-              <img src="images/buttons/heart.svg" class="card__icon-like" alt="Иконка в виде сердца">
+              <button class="card__button-like card__button-like_hover">
+                <img src="images/buttons/heart.svg" alt="Иконка в виде сердца"></button>
             </figcaption>
           </figure>
         </section>
       </main>
       <!-----FOOTER----->
       <footer class="footer wrapper">
-        <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
+        <a href="#start" class="footer__copyright">&#169; 2022 Mesto Russia</a>
       </footer>
     </div>
     <!-----POPUP----->
-    <div class="popup popup_opened">
+    <div class="popup">
       <div class="popup__container">
         <form class="profile-edit-form">
           <button class="profile-edit-form__button-close button">
             <img src="./images/buttons/Close%20Icon.svg" class="profile-edit-form__button-close-icon" alt="иконка закрытия окна">
           </button>
+          <p class="profile-edit-form__title">Редактировать профиль</p>
           <fieldset class="profile-edit-form__fields">
-            <legend class="profile-edit-form__title">Редактировать профиль</legend>
             <label for="name">
-              <input type="text" class="profile-edit-form__field" placeholder="Жак-Ив Кусто" id="name">
+              <input type="text" class="profile-edit-form__field" value="Жак-Ив Кусто" placeholder="Имя" id="name">
             </label>
-            <label for="about">
-              <input type="text" class="profile-edit-form__field" placeholder="Исследователь океана" id="about">
+            <label for="job">
+              <input type="text" class="profile-edit-form__field" value="Исследователь океана" placeholder="Деятельность" id="job">
             </label>
           </fieldset>
-          <button class="profile-edit-form__button-save button">Сохранить</button>
+          <button type="submit" class="profile-edit-form__button-save button">Сохранить</button>
         </form>
       </div>
     </div>

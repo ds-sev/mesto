@@ -6,9 +6,11 @@
   align-items: center;
   border: none;
   background-color: transparent;
+  transition: ease-out .2s;
 }
 
 .button:hover {
+  transition: ease-in .1s;
   opacity: .6;
   cursor: pointer;
 }
