@@ -1,7 +1,7 @@
 # Проект: Место
 _Спринт 5: Практическая работа 4_
 ___
-![This is an image](./images/logo/logo.svg)
+![logo_white](./images/logo/logo_black.png)![logo_black](./images/logo/logo.svg)
 ### Содержание
 
 * Задание
