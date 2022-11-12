@@ -1,8 +1,0 @@
-.card__icon-like:hover {
-  opacity: .5;
-}
-
-.card__icon-like:active {
-  opacity: unset;
-  background-image: url('../../../images/buttons/heart_active.svg');
-}
