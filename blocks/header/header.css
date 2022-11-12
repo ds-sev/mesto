@@ -1,9 +1,9 @@
-.header__position {
+.header {
   margin-top: 45px;
 }
 
 @media screen and (max-width: 544px) {
-  .header__position {
+  .header {
     margin-top: 28px;
   }
 }

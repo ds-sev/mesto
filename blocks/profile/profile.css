@@ -1,4 +1,6 @@
 .profile {
+  margin-top: 40px;
+  margin-bottom: 50px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -8,6 +10,7 @@
 
 @media screen and (max-width: 544px) {
   .profile {
+    margin-bottom: 36px;
     flex-direction: column;
     text-align: center;
   }
