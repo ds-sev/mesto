@@ -5,6 +5,7 @@
 
 @media screen and (max-width: 544px) {
   .profile__position {
+    margin-top: 42px;
     margin-bottom: 36px;
   }
 }

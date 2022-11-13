@@ -1,14 +1,16 @@
 .profile__name-container {
-  margin-right: 50px;
+  max-width: 336px;
   display: flex;
+  column-gap: 18px;
   position: relative;
   justify-content: space-between;
   align-items: center;
-  max-width: 294px;
+
 }
 
 @media screen and (max-width: 544px) {
   .profile__name-container {
-    margin-right: 0;
+    column-gap: 10px;
+    margin-left: 28px;
   }
 }

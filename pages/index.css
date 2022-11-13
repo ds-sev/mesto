@@ -57,3 +57,18 @@
 @import url('../blocks/profile-edit-form/__button-save/profile-edit-form__button-save.css');
 @import url('../blocks/profile-edit-form/__button-close/profile-edit-form__button-close.css');
 @import url('../blocks/profile-edit-form/__button-close-icon/profile-edit-form__button-close-icon.css');
+
+.profile__info {
+  max-width: 336px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 544px) {
+  .profile__info {
+    justify-content: center;
+  }
+}
+
+
+
