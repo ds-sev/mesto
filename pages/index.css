@@ -19,6 +19,7 @@
 @import url('../blocks/profile/profile.css');
 @import url('../blocks/profile/__position/profile__position.css');
 @import url('../blocks/profile/__photo/profile__photo.css');
+@import url('../blocks/profile/__info/profile__info.css');
 @import url('../blocks/profile/__name-container/profile__name-container.css');
 @import url('../blocks/profile/__name/profile__name.css');
 @import url('../blocks/profile/__about/profile__about.css');
@@ -58,17 +59,8 @@
 @import url('../blocks/profile-edit-form/__button-close/profile-edit-form__button-close.css');
 @import url('../blocks/profile-edit-form/__button-close-icon/profile-edit-form__button-close-icon.css');
 
-.profile__info {
-  max-width: 336px;
-  display: flex;
-  flex-wrap: wrap;
-}
 
-@media screen and (max-width: 544px) {
-  .profile__info {
-    justify-content: center;
-  }
-}
+
 
 
 
