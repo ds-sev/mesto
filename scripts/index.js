@@ -1,10 +1,11 @@
-const formElement = document.querySelector('.popup');
-const profileEditButton = document.querySelector('.profile__button-edit');
-const popupCloseButton = document.querySelector('.profile-edit-form__button-close');
 const likeButton = document.querySelectorAll('.card__button-like');
+
+const profileEditButton = document.querySelector('.profile__button-edit');
 const nameOnPage = document.querySelector('.profile__name');         //отображаемое на сайте имя
 const jobOnPage = document.querySelector('.profile__about');         //отображаемое на сайте занятие
 
+const formElement = document.querySelector('.popup');
+const popupCloseButton = document.querySelector('.profile-edit-form__button-close');
 const nameInput = document.getElementById('name');                   //поле ввода имени формы
 const jobInput = document.getElementById('job');                     //поле ввода занятия формы
 
@@ -18,11 +19,12 @@ const likeButtonSwitch = () => {                                               /
 
 const openPopup = function () {                                                //функция открытия попап
     formElement.classList.add('popup_opened');
+    nameInput.value = nameOnPage.textContent;
+    jobInput.value = jobOnPage.textContent;
 }
 
 const closePopup = function () {                                               //функция закрытия попап
     formElement.classList.remove('popup_opened');
-    document.querySelector('.profile-edit-form').reset();
 }
 
 function formSubmitHandler(evt) {                                               //функция получения данных из формы
@@ -38,11 +40,7 @@ likeButtonSwitch();                                                             
 profileEditButton.addEventListener('click', openPopup);                     //открыть попап
 popupCloseButton.addEventListener('click', closePopup);                     //закрыть попап
 formElement.addEventListener('submit', formSubmitHandler);                  //отправка формы по нажатию кнопки Сохранить
-formElement.addEventListener("keypress", function (evt) {     //отправка формы по нажатию Enter
-    if (evt.key === "Enter") {
-        formSubmitHandler(evt);
-    }
-});
+
 
 
 
