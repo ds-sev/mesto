@@ -1,13 +1,13 @@
 # Проект: Место
 _Спринт 5: Практическая работа 4_
 ___
-![This is an image](./images/logo/logo.svg)
+![logo_white](./images/logo/logo_black.png)![logo_black](./images/logo/logo.svg)
 ### Содержание
 
 * Задание
 * Описание проекта
 * Примененные технологии
-* [Ссылка на GitHub Pages](https://www.)
+* [Ссылка на GitHub Pages](https://ds-sev.github.io/mesto)
 
 **Задание**
 
@@ -33,4 +33,4 @@ ___
 
 * **Git:** работа с локальным и удаленным репозиторием. Создание, слияние и удаление веток. Деплой готового проекта на GitHub Pages.
 
-**Ссылка на GitHub Pages:**
+**Ссылка на GitHub Pages:** https://ds-sev.github.io/mesto/
