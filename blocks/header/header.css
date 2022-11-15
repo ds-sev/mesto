@@ -1,3 +1,10 @@
 .header {
+  margin-top: 45px;
   border-bottom: 1px solid rgba(84, 84, 84, .7);
+}
+
+@media screen and (max-width: 544px) {
+  .header {
+    margin-top: 27px;
+  }
 }
