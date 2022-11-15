@@ -8,6 +8,7 @@
 
 @media screen and (max-width: 544px) {
   .profile {
+    gap:25px;
     flex-direction: column;
     text-align: center;
   }

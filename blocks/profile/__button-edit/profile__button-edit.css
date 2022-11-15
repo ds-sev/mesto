@@ -3,6 +3,7 @@
   width: 24px;
   height: 24px;
   border: 1px solid #fff;
+  background: center no-repeat url('../../../images/buttons/edit_button.svg');
 }
 
 @media screen and (max-width: 680px) {
@@ -19,7 +20,6 @@
     margin-bottom: 0;
     width: 18px;
     height: 18px;
-    top: 6px;
-    right: -28px;
+    background-size: 7.5px;
   }
 }

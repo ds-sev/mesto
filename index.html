@@ -26,57 +26,48 @@
           <div class="profile__info">
             <div class="profile__name-container">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__button-edit button" type="button">
-                <img src="./images/buttons/edit_button.svg" alt="редактирование профиля" class="profile__button-edit-icon">
-              </button>
+              <button class="profile__button-edit button" type="button" aria-label="Редактирование профиля"></button>
             </div>
             <p class="profile__about">Исследователь океана</p>
           </div>
-          <button class="profile__button-add button" type="button">
-            <img src="./images/buttons/add_button.svg" alt="добавить фото" class="profile__button-add-icon"></button>
+          <button class="profile__button-add button" type="button" aria-label="Добавить фото"></button>
         </section>
         <!--  CARDS  -->
-        <section class="cards wrapper">
+        <section class="cards wrapper" aria-label="Cards">
           <article class="card">
             <img src="./images/cards/phiol-min.jpeg" class="card__image" alt="вид на морской берег среди скалистой местности мыса Фиолент">
             <div class="card__info"><h2 class="card__title">Севастополь</h2>
-              <button class="card__button-like card__button-like_hover" type="button">
-                <img src="images/buttons/heart.svg" alt="Иконка в виде сердца"></button>
+              <button class="card__button-like" type="button" aria-label="Нравится"></button>
             </div>
           </article>
           <article class="card">
             <img src="./images/cards/alupka-min.jpeg" class="card__image" alt="Дворец Воронцова в Алупке">
             <div class="card__info"><h2 class="card__title">Алупка</h2>
-              <button class="card__button-like card__button-like_hover" type="button">
-                <img src="images/buttons/heart.svg" alt="Иконка в виде сердца"></button>
+              <button class="card__button-like" type="button" aria-label="Нравится"></button>
             </div>
           </article>
           <article class="card">
             <img src="./images/cards/belogorsk-min.jpeg" class="card__image" alt="Белая скала, возвышающаяся среди равнины">
             <div class="card__info"><h2 class="card__title">Белогорск</h2>
-              <button class="card__button-like card__button-like_hover" type="button">
-                <img src="images/buttons/heart.svg" alt="Иконка в виде сердца"></button>
+              <button class="card__button-like" type="button" aria-label="Нравится"></button>
             </div>
           </article>
           <article class="card">
             <img src="./images/cards/ai-min.jpeg" class="card__image" alt="вид с горы на лес и море">
             <div class="card__info"><h2 class="card__title">Ай-Петри</h2>
-              <button class="card__button-like card__button-like_hover" type="button">
-                <img src="images/buttons/heart.svg" alt="Иконка в виде сердца"></button>
+              <button class="card__button-like" type="button" aria-label="Нравится"></button>
             </div>
           </article>
           <article class="card">
             <img src="./images/cards/yalta_big-min.jpeg" class="card__image" alt="Замок Ласточкино Гнездо">
             <div class="card__info"><h2 class="card__title">Ялта</h2>
-              <button class="card__button-like card__button-like_hover" type="button">
-                <img src="images/buttons/heart.svg" alt="Иконка в виде сердца"></button>
+              <button class="card__button-like" type="button" aria-label="Нравится"></button>
             </div>
           </article>
           <article class="card">
             <img src="./images/cards/kokteb-min.jpeg" class="card__image" alt="мыс Хамелеон неподалеку от поселка Коктебель">
             <div class="card__info"><h2 class="card__title">Коктебель</h2>
-              <button class="card__button-like card__button-like_hover" type="button">
-                <img src="images/buttons/heart.svg" alt="Иконка в виде сердца"></button>
+              <button class="card__button-like" type="button" aria-label="Нравится"></button>
             </div>
           </article>
         </section>
@@ -89,18 +80,12 @@
     <!--  POPUP  -->
     <div class="popup">
       <div class="popup__container">
-        <form class="profile-edit-form">
-          <button class="profile-edit-form__button-close button" type="button">
-            <img src="./images/buttons/Close%20Icon.svg" class="profile-edit-form__button-close-icon" alt="иконка закрытия окна">
-          </button>
-          <p class="profile-edit-form__title">Редактировать профиль</p>
+        <form class="profile-edit-form" method="post" name="profileEditForm">
+          <button class="profile-edit-form__button-close button" type="button" aria-label="Закрыть"></button>
+          <h3 class="profile-edit-form__title">Редактировать профиль</h3>
           <fieldset class="profile-edit-form__fields">
-            <label for="name">
-              <input type="text" class="profile-edit-form__field" value="Жак-Ив Кусто" placeholder="Имя" id="name">
-            </label>
-            <label for="job">
-              <input type="text" class="profile-edit-form__field" value="Исследователь океана" placeholder="Деятельность" id="job">
-            </label>
+            <input type="text" class="profile-edit-form__field profile-edit-form__field_get_name" placeholder="Имя" name="name">
+            <input type="text" class="profile-edit-form__field profile-edit-form__field_get_job" placeholder="Деятельность" name="job">
           </fieldset>
           <button class="profile-edit-form__button-save button" type="submit">Сохранить</button>
         </form>

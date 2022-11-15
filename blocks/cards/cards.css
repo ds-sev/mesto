@@ -8,13 +8,13 @@
 
 @media screen and (max-width: 712px) {
   .cards {
-    justify-items: center;
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (max-width: 544px) {
   .cards {
-    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-template-columns: 100%;
   }
 }
