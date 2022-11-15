@@ -16,7 +16,6 @@
 /*=====PROFILE=====*/
 
 @import url('../blocks/profile/profile.css');
-@import url('../blocks/profile/__position/profile__position.css');
 @import url('../blocks/profile/__photo/profile__photo.css');
 @import url('../blocks/profile/__info/profile__info.css');
 @import url('../blocks/profile/__name-container/profile__name-container.css');
