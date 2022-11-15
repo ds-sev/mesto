@@ -1,5 +1,4 @@
 .card__button-like_active {
   opacity: 1;
-  background-image: url('../../../../images/buttons/heart_active.svg');
-  background-repeat: no-repeat;
+  background: no-repeat url('../../../../images/buttons/heart_active.svg');
 }

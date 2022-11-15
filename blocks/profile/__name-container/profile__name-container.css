@@ -5,12 +5,11 @@
   position: relative;
   justify-content: space-between;
   align-items: center;
-
 }
 
 @media screen and (max-width: 544px) {
   .profile__name-container {
-    column-gap: 10px;
-    margin-left: 28px;
+    column-gap: 0;
+    margin-left: 17px;
   }
 }

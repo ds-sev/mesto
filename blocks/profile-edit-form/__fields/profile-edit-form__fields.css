@@ -1,8 +1,16 @@
 .profile-edit-form__fields {
-  margin: 0;
+  margin: 0 0 47px;
   padding: 0;
   border: none;
   display: flex;
   flex-direction: column;
-  gap: 21px;
+  gap: 20px;
+}
+
+@media screen and (max-width: 544px) {
+  .profile-edit-form__fields {
+    margin-bottom: 35px;
+    font-size: 18px;
+    line-height: 22px;
+  }
 }

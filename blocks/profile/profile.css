@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 544px) {
   .profile {
-    margin-bottom: 36px;
+    gap:25px;
     flex-direction: column;
     text-align: center;
   }

@@ -4,10 +4,11 @@ const profileEditButton = document.querySelector('.profile__button-edit');
 const nameOnPage = document.querySelector('.profile__name');         //отображаемое на сайте имя
 const jobOnPage = document.querySelector('.profile__about');         //отображаемое на сайте занятие
 
-const formElement = document.querySelector('.popup');
+const popup = document.querySelector('.popup');
+const formElement = popup.querySelector('.profile-edit-form');
 const popupCloseButton = document.querySelector('.profile-edit-form__button-close');
-const nameInput = document.getElementById('name');                   //поле ввода имени формы
-const jobInput = document.getElementById('job');                     //поле ввода занятия формы
+const nameInput = document.querySelector('.profile-edit-form__field_get_name');                   //поле ввода имени формы
+const jobInput = document.querySelector('.profile-edit-form__field_get_job');                     //поле ввода занятия формы
 
 const likeButtonSwitch = () => {                                               //функция переключения активности кнопки Лайк
     likeButton.forEach(like => {
@@ -18,21 +19,19 @@ const likeButtonSwitch = () => {                                               /
 }
 
 const openPopup = function () {                                                //функция открытия попап
-    formElement.classList.add('popup_opened');
+    popup.classList.add('popup_opened');
     nameInput.value = nameOnPage.textContent;
     jobInput.value = jobOnPage.textContent;
 }
 
 const closePopup = function () {                                               //функция закрытия попап
-    formElement.classList.remove('popup_opened');
+    popup.classList.remove('popup_opened');
 }
 
 function formSubmitHandler(evt) {                                               //функция получения данных из формы
     evt.preventDefault();
-    let name = nameInput.value;
-    let job = jobInput.value;
-    nameOnPage.textContent = name;
-    jobOnPage.textContent = job;
+    nameOnPage.textContent = nameInput.value;
+    jobOnPage.textContent = jobInput.value;
     closePopup();
 }
 
