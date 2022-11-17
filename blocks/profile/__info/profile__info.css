@@ -1,11 +1,26 @@
 .profile__info {
-  max-width: 336px;
+  min-width: 300px;
+  max-width: 60%;
   display: flex;
   flex-wrap: wrap;
 }
 
+@media screen and (max-width: 830px) {
+  .profile__info {
+    max-width: 55%;
+  }
+}
+
+@media screen and (max-width: 712px) {
+  .profile__info {
+    max-width: 70%;
+  }
+}
+
 @media screen and (max-width: 544px) {
   .profile__info {
+    min-width: unset;
+    max-width: 100%;
     justify-content: center;
   }
 }

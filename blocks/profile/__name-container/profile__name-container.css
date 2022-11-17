@@ -1,15 +1,15 @@
 .profile__name-container {
-  max-width: 336px;
+  width: 100%;
   display: flex;
   column-gap: 18px;
   position: relative;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
 @media screen and (max-width: 544px) {
   .profile__name-container {
+    justify-content: center;
     column-gap: 0;
-    margin-left: 17px;
   }
 }
