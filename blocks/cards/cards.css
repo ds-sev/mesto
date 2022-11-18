@@ -6,15 +6,16 @@
   grid-auto-rows: auto;
 }
 
-@media screen and (max-width: 712px) {
+@media screen and (max-width: 780px) {
   .cards {
+    width: fit-content;
+    justify-items: center;
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (max-width: 544px) {
   .cards {
-    justify-items: center;
     grid-template-columns: 100%;
   }
 }
