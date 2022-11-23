@@ -33,56 +33,25 @@
         </section>
         <!--  CARDS  -->
         <section class="cards wrapper" aria-label="Cards">
-          <article class="card">
-            <div class="card__photo-container">
-              <img src="./images/cards/phiol.jpeg" class="card__image"
-                   alt="вид на морской берег среди скалистой местности мыса Фиолент">
+
+<!--           <article class="card"> -->
+<!--             <div class="card__photo-container" style="background-image: url('./images/cards/belogorsk.jpeg'); -->
+<!--             background-position: center; background-size: cover"> -->
+<!--             </div> -->
+<!--             <div class="card__info"><h2 class="card__title">Белогорск</h2> -->
+<!--               <button class="card__button-like" type="button" aria-label="Нравится"></button> -->
+<!--             </div> -->
+<!--           </article> -->
+
+          <template id="card">
+            <div class="card">
+              <div class="card__photo-container" style="background-position: center; background-size: cover">
+              </div>
+              <div class="card__info"><h2 class="card__title"></h2>
+                <button class="card__button-like" type="button" aria-label="Нравится"></button>
+              </div>
             </div>
-            <div class="card__info"><h2 class="card__title">Севастополь</h2>
-              <button class="card__button-like" type="button" aria-label="Нравится"></button>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card__photo-container">
-              <img src="./images/cards/alupka.jpeg" class="card__image" alt="Дворец Воронцова в Алупке">
-            </div>
-            <div class="card__info"><h2 class="card__title">Алупка</h2>
-              <button class="card__button-like" type="button" aria-label="Нравится"></button>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card__photo-container" style="background-image: url('./images/cards/belogorsk.jpeg');
-            background-position: center; background-size: cover">
-<!--               <img src="./images/cards/belogorsk-min.jpeg" class="card__image" alt="Белая скала, возвышающаяся среди равнины"> -->
-            </div>
-            <div class="card__info"><h2 class="card__title">Белогорск</h2>
-              <button class="card__button-like" type="button" aria-label="Нравится"></button>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card__photo-container">
-              <img src="./images/cards/ai.jpeg" class="card__image" alt="вид с горы на лес и море">
-            </div>
-            <div class="card__info"><h2 class="card__title">Ай-Петри</h2>
-              <button class="card__button-like" type="button" aria-label="Нравится"></button>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card__photo-container">
-              <img src="./images/cards/yalta_big.jpeg" class="card__image" alt="Замок Ласточкино Гнездо">
-            </div>
-            <div class="card__info"><h2 class="card__title">Ялта</h2>
-              <button class="card__button-like" type="button" aria-label="Нравится"></button>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card__photo-container">
-              <img src="./images/cards/kokteb.jpeg" class="card__image" alt="мыс Хамелеон неподалеку от поселка Коктебель">
-            </div>
-            <div class="card__info"><h2 class="card__title">Коктебель</h2>
-              <button class="card__button-like" type="button" aria-label="Нравится"></button>
-            </div>
-          </article>
+          </template>
         </section>
       </main>
       <!--  FOOTER  -->
