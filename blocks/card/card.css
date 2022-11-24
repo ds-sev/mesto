@@ -8,9 +8,25 @@
   background-color: white;
 }
 
+@media screen and (max-width: 780px) {
+  .card {
+    margin-left: 0;
+    margin-right: auto;
+  }
+  .card:nth-child(even) {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
 @media screen and (max-width: 544px) {
   .card {
+    margin-left: 0;
+    margin-right: 0;
     max-width: 320px;
+  }
+  .card:nth-child(even) {
+    margin: unset;
   }
 }
 

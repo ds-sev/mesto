@@ -4,13 +4,10 @@
   column-gap: 17px;
   row-gap: 20px;
   grid-auto-rows: auto;
-
-  border: 1px solid red;
 }
 
 @media screen and (max-width: 780px) {
   .cards {
-
     justify-items: center;
     grid-template-columns: repeat(2, 1fr);
   }
