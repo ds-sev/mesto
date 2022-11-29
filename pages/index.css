@@ -49,9 +49,9 @@
 
 /*=====PROFILE EDIT-FORM=====*/
 
-@import url('../blocks/profile-edit-form/profile-edit-form.css');
-@import url('../blocks/profile-edit-form/__title/profile-edit-form__title.css');
-@import url('../blocks/profile-edit-form/__fields/profile-edit-form__fields.css');
-@import url('../blocks/profile-edit-form/__field/profile-edit-form__field.css');
-@import url('../blocks/profile-edit-form/__button-save/profile-edit-form__button-save.css');
-@import url('../blocks/profile-edit-form/__button-close/profile-edit-form__button-close.css');
+@import url('../blocks/edit-form/edit-form.css');
+@import url('../blocks/edit-form/__title/edit-form__title.css');
+@import url('../blocks/edit-form/__fields/edit-form__fields.css');
+@import url('../blocks/edit-form/__field/edit-form__field.css');
+@import url('../blocks/edit-form/__button-save/edit-form__button-save.css');
+@import url('../blocks/edit-form/__button-close/edit-form__button-close.css');

@@ -1,4 +1,4 @@
-.profile-edit-form {
+.edit-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 544px) {
-  .profile-edit-form {
+  .edit-form {
     margin: auto 19px;
     padding: 25px 22px;
     gap: 10px;

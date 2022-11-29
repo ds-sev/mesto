@@ -33,15 +33,7 @@
         </section>
         <!--  CARDS  -->
         <section class="cards wrapper" aria-label="Cards">
-          <template id="card">
-            <div class="card">
-              <div class="card__photo-container" style="background-position: center; background-size: cover">
-              </div>
-              <div class="card__info"><h2 class="card__title"></h2>
-                <button class="card__button-like" id="card__button-like" type="button" aria-label="Нравится"></button>
-              </div>
-            </div>
-          </template>
+
         </section>
       </main>
       <!--  FOOTER  -->
@@ -49,20 +41,45 @@
         <a href="#start" class="footer__copyright">&#169; 2022 Mesto Russia</a>
       </footer>
     </div>
-    <!--  POPUP  -->
-    <div class="popup">
+    <!--  PROFILE-EDIT-POPUP  -->
+    <div class="popup" id="profile-edit-popup">
       <div class="popup__container">
-        <form class="profile-edit-form" method="post" name="profileEditForm">
-          <button class="profile-edit-form__button-close button" type="button" aria-label="Закрыть"></button>
-          <h3 class="profile-edit-form__title">Редактировать профиль</h3>
-          <fieldset class="profile-edit-form__fields">
-            <input type="text" class="profile-edit-form__field profile-edit-form__field_get_name" placeholder="Имя" name="name">
-            <input type="text" class="profile-edit-form__field profile-edit-form__field_get_job" placeholder="Деятельность" name="job">
+        <form class="edit-form" id="profile-edit-form" method="post" name="profileEditForm">
+          <button class="edit-form__button-close button" id="profile-edit-form-button-close" type="button" aria-label="Закрыть"></button>
+          <h3 class="edit-form__title">Редактировать профиль</h3>
+          <fieldset class="edit-form__fields">
+            <input type="text" class="edit-form__field edit-form__field_get_name" placeholder="Имя" name="name">
+            <input type="text" class="edit-form__field edit-form__field_get_job" placeholder="Деятельность" name="job">
           </fieldset>
-          <button class="profile-edit-form__button-save button" type="submit">Сохранить</button>
+          <button class="edit-form__button-save button" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
+    <!--  ADD-CARD-POPUP  -->
+    <div class="popup" id="add-card-popup">
+      <div class="popup__container">
+        <form class="edit-form" id="add-card-form" method="post" name="new card">
+          <button class="edit-form__button-close button" id="add-card-form-button-close" type="button" aria-label="Закрыть"></button>
+          <h3 class="edit-form__title">Новое место</h3>
+          <fieldset class="edit-form__fields">
+            <input type="text" class="edit-form__field edit-form__field_get_place-name" placeholder="Название"
+                   name="place">
+            <input type="text" class="edit-form__field edit-form__field_get_link"
+                   placeholder="Ссылка на картинку" name="link">
+          </fieldset>
+          <button class="edit-form__button-save button" id="create-button" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
+    <!--  CARD-TEMPLATE  -->
+    <template id="card">
+      <div class="card">
+        <div class="card__photo-container" style="background-position: center; background-size: cover"></div>
+        <div class="card__info"><h2 class="card__title"></h2>
+          <button class="card__button-like" id="card__button-like" type="button" aria-label="Нравится"></button>
+        </div>
+      </div>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

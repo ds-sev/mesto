@@ -1,4 +1,4 @@
-.profile-edit-form__field {
+.edit-form__field {
   margin: 0;
   padding: 9px 0;
   width: 100%;
@@ -9,6 +9,6 @@
   line-height: 17px;
 }
 
-.profile-edit-form__field::-webkit-input-placeholder {
-  color:black;
+.edit-form__field::-webkit-input-placeholder {
+  color: #c4c4c4;
 }
