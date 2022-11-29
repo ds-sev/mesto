@@ -1,0 +1,15 @@
+.card__button-delete {
+  width: 18px;
+  height: 19px;
+  margin: 20px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  transition: ease-out .2s;
+  background: center no-repeat url('../../../images/buttons/thrash.svg');
+}
+
+.card__button-delete:hover {
+  transition: ease-in .1s;
+  opacity: .5;
+}

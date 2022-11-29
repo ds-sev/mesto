@@ -35,6 +35,7 @@
 @import url('../blocks/card/__info/card__info.css');
 @import url('../blocks/card/__button-like/card__button-like.css');
 @import url('../blocks/card/__button-like/_active/card__button-like_active.css');
+@import url('../blocks/card/__button-remove/card__button-delete.css');
 
 /*=====FOOTER=====*/
 
@@ -55,3 +56,5 @@
 @import url('../blocks/edit-form/__field/edit-form__field.css');
 @import url('../blocks/edit-form/__button-save/edit-form__button-save.css');
 @import url('../blocks/edit-form/__button-close/edit-form__button-close.css');
+
+

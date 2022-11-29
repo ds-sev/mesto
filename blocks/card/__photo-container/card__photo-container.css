@@ -1,3 +1,5 @@
 .card__photo-container {
   height: 282px;
+  display: flex;
+  justify-content: flex-end;
 }

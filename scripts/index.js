@@ -61,7 +61,7 @@ const initialCards = [
   },
   {
     name: 'Бахчисарай',
-    link: 'https://images.unsplash.com/photo-1621953231638-78df098abfb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
+    link: 'https://images.unsplash.com/photo-1598707206160-0a6b20211774?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80'
   },
   {
     name: 'Алупка',
@@ -83,6 +83,11 @@ const addCardForm = addCardPopup.querySelector('#add-card-form');
 const placeInput = addCardPopup.querySelector('.edit-form__field_get_place-name');                             //значения поля ввода названия места
 const linkInput = addCardPopup.querySelector('.edit-form__field_get_link');                                    //значение поля ввода ссылки на изображение
 
+/* УДАЛЕНИЕ КАРТОЧКИ */
+const deleteCard = (event) => {
+  event.target.closest('.card').remove();
+}
+
 /* ФУНКЦИЯ СОЗДАНИЯ КАРТОЧКИ */
 const generateCard = (cardData) => {
   const cardTemplate = document.querySelector('#card').content.querySelector('.card');
@@ -98,6 +103,8 @@ const generateCard = (cardData) => {
     })
   }
   switchLikeButton();
+  const deleteCardButton = cardElement.querySelector('#card-button-delete');
+  deleteCardButton.addEventListener('click', deleteCard);                                                          //вызов функции удаления карточки
   return cardElement;
 }
 
@@ -121,6 +128,12 @@ const handleSubmitAddCardForm = (event) => {
 /* ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ В РАЗМЕТКУ */
 addCardForm.addEventListener('submit', handleSubmitAddCardForm);
 
+/* ФУНКЦИЯ УДАЛЕНИЯ КАРТОЧКИ */
 
+// const removeCardButton = document.querySelector('#card-remove');
+// const removeCard = function () {
+//   cardsSection.classList.remove('popup_opened');
+// }
+// removeCardButton.addEventListener('click', removeCard);
 
 
