@@ -4,4 +4,6 @@
   justify-content: center;
   transform: translate(0, -50%);
   top: 50%;
+
+  border: 1px solid red;
 }
