@@ -1,8 +1,9 @@
 .card__button-delete {
+  position: absolute;
+  top: 20px;
+  right: 20px;
   width: 18px;
   height: 19px;
-  margin: 20px;
-  padding: 0;
   border: none;
   cursor: pointer;
   transition: ease-out .2s;

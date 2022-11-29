@@ -70,10 +70,9 @@
       </div>
     </div>
     <!--  OPEN-IMAGE-POPUP  -->
-    <div class="popup popup_theme_dark popup_opened" id="image-view-popup">
+    <div class="popup popup_theme_dark" id="image-view-popup">
       <figure class="image-view__container">
-        <img alt="Фото места"
-             src="https://sun9-69.userapi.com/impf/c852216/v852216364/76383/RijxIWp_ivY.jpg?size=1280x800&quality=96&sign=ad1ddd2c9afaa4b9ce4c71944123e90a&type=album">
+        <img class="image-view__item" alt="Фото места" src="">
         <figcaption class="image-view__title"></figcaption>
         <button class="edit-form__button-close button" id="image-view-button-close" type="button" aria-label="Закрыть"></button>
       </figure>
@@ -81,9 +80,9 @@
     <!--  CARD-TEMPLATE  -->
     <template id="card">
       <div class="card">
-        <div class="card__photo-container" style="background-position: center; background-size: cover">
-          <button class="card__button-delete" id="card-button-delete" type="button" aria-label="Удалить карточку"></button>
+        <div class="card__photo-container" id="image-card" style="background-position: center; background-size: cover">
         </div>
+        <button class="card__button-delete" id="card-button-delete" type="button" aria-label="Удалить карточку"></button>
         <div class="card__info"><h2 class="card__title"></h2>
           <button class="card__button-like" id="card__button-like" type="button" aria-label="Нравится"></button>
         </div>

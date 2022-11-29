@@ -2,4 +2,12 @@
   height: 282px;
   display: flex;
   justify-content: flex-end;
+  transition: ease-out .2s;
 }
+
+.card__photo-container:hover {
+  transition: ease-in .1s;
+  opacity: .95;
+  cursor: pointer;
+}
+

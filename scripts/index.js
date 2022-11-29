@@ -33,6 +33,7 @@ const addCardOpenPopup = function () {
 const closePopup = function () {
   profileEditPopup.classList.remove('popup_opened');
   addCardPopup.classList.remove('popup_opened');
+  imageViewPopup.classList.remove('popup_opened');
 }
 
 /* ПОЛУЧЕНИE ДАННЫХ ИЗ ФОРМЫ РЕДАКТИРОВАНИЯ ПРОФИЛЯ */
@@ -88,6 +89,18 @@ const deleteCard = (event) => {
   event.target.closest('.card').remove();
 }
 
+const imageViewPopup = document.querySelector('#image-view-popup');
+const imageViewItem = document.querySelector('.image-view__item');
+const imageViewTitle = document.querySelector('.image-view__title');
+
+
+
+const imageViewCloseButton = document.querySelector('#image-view-button-close');
+imageViewCloseButton.addEventListener('click', closePopup);
+
+
+
+
 /* ФУНКЦИЯ СОЗДАНИЯ КАРТОЧКИ */
 const generateCard = (cardData) => {
   const cardTemplate = document.querySelector('#card').content.querySelector('.card');
@@ -105,6 +118,14 @@ const generateCard = (cardData) => {
   switchLikeButton();
   const deleteCardButton = cardElement.querySelector('#card-button-delete');
   deleteCardButton.addEventListener('click', deleteCard);                                                          //вызов функции удаления карточки
+
+  const imageCard = cardElement.querySelector('#image-card');
+  const imageViewOpen = () => {
+    imageViewPopup.classList.add('popup_opened');
+    imageViewItem.src = cardData.link;
+    imageViewTitle.textContent = cardName.textContent;
+  }
+  imageCard.addEventListener('click', imageViewOpen);
   return cardElement;
 }
 
@@ -128,12 +149,9 @@ const handleSubmitAddCardForm = (event) => {
 /* ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ В РАЗМЕТКУ */
 addCardForm.addEventListener('submit', handleSubmitAddCardForm);
 
-/* ФУНКЦИЯ УДАЛЕНИЯ КАРТОЧКИ */
+//////////////////////////////////////////////////////////////
 
-// const removeCardButton = document.querySelector('#card-remove');
-// const removeCard = function () {
-//   cardsSection.classList.remove('popup_opened');
-// }
-// removeCardButton.addEventListener('click', removeCard);
+
+
 
 

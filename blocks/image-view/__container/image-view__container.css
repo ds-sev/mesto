@@ -2,8 +2,6 @@
   position: relative;
   margin: 0 auto;
   width: max-content;
-  max-width: 75vw;
-  max-height: 75vh;
   display: flex;
   flex-direction: column;
   transform: translate(0, -50%);
