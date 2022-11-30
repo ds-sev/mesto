@@ -62,8 +62,10 @@
           <button class="button_type_close button" id="add-card-form-button-close" type="button" aria-label="Закрыть"></button>
           <h3 class="edit-form__title">Новое место</h3>
           <fieldset class="edit-form__fields">
-            <input type="text" class="edit-form__field edit-form__field_get_place-name" placeholder="Название" name="place">
-            <input type="text" class="edit-form__field edit-form__field_get_link" placeholder="Ссылка на картинку" name="link">
+            <input type="text" required class="edit-form__field edit-form__field_get_place-name" placeholder="Название"
+                   name="place">
+            <input type="url" required class="edit-form__field edit-form__field_get_link"
+                   placeholder="Ссылка на картинку" name="link">
           </fieldset>
           <button class="edit-form__button-save button" id="create-button" type="submit">Создать</button>
         </form>
