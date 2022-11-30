@@ -92,14 +92,8 @@ const deleteCard = (event) => {
 const imageViewPopup = document.querySelector('#image-view-popup');
 const imageViewItem = document.querySelector('.image-view__item');
 const imageViewTitle = document.querySelector('.image-view__title');
-
-
-
 const imageViewCloseButton = document.querySelector('#image-view-button-close');
 imageViewCloseButton.addEventListener('click', closePopup);
-
-
-
 
 /* ФУНКЦИЯ СОЗДАНИЯ КАРТОЧКИ */
 const generateCard = (cardData) => {
@@ -109,7 +103,8 @@ const generateCard = (cardData) => {
   const cardLink = cardElement.querySelector('.card__photo-container');
   cardName.textContent = cardData.name;
   cardLink.style.backgroundImage = `url(${cardData.link})`;
-  const switchLikeButton = () => {                                                                                      //функция переключения активности Лайков
+  //функция переключения активности Лайков
+  const switchLikeButton = () => {
     const likeButton = cardElement.querySelector('#card__button-like');
     likeButton.addEventListener('click', (event) => {
       event.target.classList.toggle('card__button-like_active');
@@ -117,8 +112,9 @@ const generateCard = (cardData) => {
   }
   switchLikeButton();
   const deleteCardButton = cardElement.querySelector('#card-button-delete');
-  deleteCardButton.addEventListener('click', deleteCard);                                                          //вызов функции удаления карточки
-
+  //вызов функции удаления карточки
+  deleteCardButton.addEventListener('click', deleteCard);
+  //просмотр полноэкранного изображения выбранной карточки
   const imageCard = cardElement.querySelector('#image-card');
   const imageViewOpen = () => {
     imageViewPopup.classList.add('popup_opened');
@@ -134,23 +130,19 @@ const renderCard = (cardData) => {
   cardsSection.prepend(generateCard(cardData));
 }
 
-/* ПЕРЕБОР МАССИВА ПРЕДЗАГРУЖЕННЫХ КАРТОЧКЕК И ПЕРЕДАЧА КАЖДОГО ЭЛЕМЕНТА В ФУНКЦИЮ СОЗДАНИЯ КАРТОЧЕК  */
+/* ПЕРЕБОР МАССИВА ПРЕДЗАГРУЖЕННЫХ КАРТОЧКЕК И ПЕРЕДАЧА КАЖДОГО ЭЛЕМЕНТА В ФУНКЦИЮ СОЗДАНИЯ НОВОЙ КАРТОЧКИ */
 initialCards.slice().reverse()
   .forEach((cardData) => {
     renderCard(cardData);
   });
 
+/* ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ В РАЗМЕТКУ */
 const handleSubmitAddCardForm = (event) => {
   event.preventDefault();
   renderCard({name: placeInput.value, link: linkInput.value});
   closePopup();
 }
-
-/* ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ В РАЗМЕТКУ */
 addCardForm.addEventListener('submit', handleSubmitAddCardForm);
-
-//////////////////////////////////////////////////////////////
-
 
 
 

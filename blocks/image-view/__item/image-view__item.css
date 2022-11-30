@@ -1,5 +1,7 @@
 .image-view__item {
-  object-fit: cover;
-  max-height: 75vh;
+  object-fit: contain;
   max-width: 75vw;
+  max-height: 75vh;
+  width: auto;
+  height: auto;
 }

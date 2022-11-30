@@ -1,8 +1,10 @@
 .image-view__container {
   position: relative;
   margin: 0 auto;
+  max-width: 75vw;
+  max-height: 75vh;
   width: max-content;
-  display: flex;
+  height: max-content;
   flex-direction: column;
   transform: translate(0, -50%);
   top: 50%;
