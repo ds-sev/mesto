@@ -63,7 +63,7 @@
 
 /*=====IMAGE-VIEW POPUP=====*/
 
+@import url('../blocks/image-view/image-view.css');
 @import url('../blocks/popup/_theme/_dark/popup_theme_dark.css');
-@import url('../blocks/image-view/__container/image-view__container.css');
 @import url('../blocks/image-view/__item/image-view__item.css');
 @import url('../blocks/image-view/__title/image-view__title.css');
