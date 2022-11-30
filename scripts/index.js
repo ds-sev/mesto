@@ -29,10 +29,8 @@ const handleNewCardOpenPopup = function () {
 }
 
 /* ЗАКРЫТИЕ ЦЕЛЕВОГО ПОПАПА */
-const handleTargetPopupClose = function () {
-  profileEditPopup.classList.remove('popup_opened');
-  popupNewCard.classList.remove('popup_opened');
-  imageViewPopup.classList.remove('popup_opened');
+const handleTargetPopupClose = (evt) => {
+  evt.target.closest('.popup').classList.remove('popup_opened');
 }
 
 /* ПОЛУЧЕНИE ДАННЫХ ИЗ ФОРМЫ РЕДАКТИРОВАНИЯ ПРОФИЛЯ */
