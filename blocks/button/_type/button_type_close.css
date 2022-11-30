@@ -1,4 +1,4 @@
-.edit-form__button-close {
+.button_type_close {
   width: 32px;
   height: 32px;
   position: absolute;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 544px) {
-  .edit-form__button-close {
+  .button_type_close {
     width: 20px;
     height: 20px;
     top: -35px;

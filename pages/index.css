@@ -7,6 +7,7 @@
 @import url('../blocks/page/page.css');
 @import url('../blocks/wrapper/wrapper.css');
 @import url('../blocks/button/button.css');
+@import url('../blocks/button/_type/button_type_close.css');
 @import url('../blocks/figure/figure.css');
 
 /*=====HEADER=====*/
@@ -56,7 +57,6 @@
 @import url('../blocks/edit-form/__fields/edit-form__fields.css');
 @import url('../blocks/edit-form/__field/edit-form__field.css');
 @import url('../blocks/edit-form/__button-save/edit-form__button-save.css');
-@import url('../blocks/edit-form/__button-close/edit-form__button-close.css');
 
 /*=====IMAGE-VIEW POPUP=====*/
 
