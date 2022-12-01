@@ -25,17 +25,14 @@
           <div class="profile__info">
             <div class="profile__name-container">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__button-edit button js-button" data-path="1" type="button"
-                      aria-label="Редактирование профиля"></button>
+              <button class="profile__button-edit button" type="button" aria-label="Редактирование профиля"></button>
             </div>
             <p class="profile__about">Исследователь океана</p>
           </div>
-          <button class="profile__button-add button" data-path="2" type="button" aria-label="Добавить фото"></button>
+          <button class="profile__button-add button" type="button" aria-label="Добавить фото"></button>
         </section>
         <!--  CARDS  -->
-        <section class="cards wrapper" aria-label="Cards">
-
-        </section>
+        <section class="cards wrapper" aria-label="Cards"></section>
       </main>
       <!--  FOOTER  -->
       <footer class="footer wrapper">
@@ -43,11 +40,10 @@
       </footer>
     </div>
     <!--  PROFILE-EDIT-POPUP  -->
-    <div class="popup" data-modal="1" id="profile-edit-popup">
+    <div class="popup" id="profile-edit-popup">
       <div class="popup__container">
         <form class="edit-form" id="profile-edit-form" method="post" name="profileEditForm">
-          <button class="button_type_close button" id="profile-edit-form-button-close" type="button"
-                  aria-label="Закрыть"></button>
+          <button class="button_type_close button" id="profile-edit-form-button-close" type="button" aria-label="Закрыть"></button>
           <h3 class="edit-form__title">Редактировать профиль</h3>
           <fieldset class="edit-form__fields">
             <input type="text" class="edit-form__field edit-form__field_get_name" placeholder="Имя" name="name">
@@ -58,26 +54,24 @@
       </div>
     </div>
     <!--  ADD-CARD-POPUP  -->
-    <div class="popup" data-modal="2" id="add-card-popup">
+    <div class="popup" id="add-card-popup">
       <div class="popup__container">
         <form class="edit-form" id="add-card-form" method="post" name="new card">
           <button class="button_type_close button" id="add-card-form-button-close" type="button" aria-label="Закрыть"></button>
           <h3 class="edit-form__title">Новое место</h3>
           <fieldset class="edit-form__fields">
-            <input type="text" required class="edit-form__field edit-form__field_get_place-name" placeholder="Название"
-                   name="place">
-            <input type="url" required class="edit-form__field edit-form__field_get_link"
-                   placeholder="Ссылка на картинку" name="link">
+            <input type="text" required class="edit-form__field edit-form__field_get_place-name" placeholder="Название" name="place">
+            <input type="url" required class="edit-form__field edit-form__field_get_link" placeholder="Ссылка на картинку" name="link">
           </fieldset>
           <button class="edit-form__button-save button" id="create-button" type="submit">Создать</button>
         </form>
       </div>
     </div>
     <!--  OPEN-IMAGE-POPUP  -->
-    <div class="popup popup_theme_dark" data-modal="3" id="image-view-popup">
+    <div class="popup popup_theme_dark" id="image-view-popup">
       <div class="image-view image-view__container">
         <figure class="figure">
-          <img class="image-view__item" alt="Фото места" src="#">
+          <img class="image-view__item" alt="#" src="#">
           <figcaption class="image-view__title"></figcaption>
         </figure>
         <button class="button_type_close button" id="image-view-button-close" type="button" aria-label="Закрыть"></button>
@@ -86,7 +80,7 @@
     <!--  CARD-TEMPLATE  -->
     <template id="card">
       <div class="card">
-        <div class="card__photo-container js-button" data-path="3" id="image-card" style="background-position: center;
+        <div class="card__photo-container" id="image-card" style="background-position: center;
         background-size: cover"></div>
         <button class="card__button-delete" id="card-button-delete" type="button" aria-label="Удалить карточку"></button>
         <div class="card__info"><h2 class="card__title"></h2>

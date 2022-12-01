@@ -29,6 +29,7 @@ const cardsSection = document.querySelector('.cards'),
 function openPopup(targetPopup) {
   targetPopup.classList.add('popup_opened');
 }
+
 /* ЗАКРЫТИЕ ПОПАПОВ */
 function closePopup(targetPopup) {
   targetPopup.classList.remove('popup_opened');
@@ -63,12 +64,13 @@ function handleProfileEditFormSubmitData(evt) {
   jobOnPage.textContent = jobInput.value;
   closePopup(profileEditPopup);
 }
+
 profileEditForm.addEventListener('submit', handleProfileEditFormSubmitData);
 
 /* ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ В РАЗМЕТКУ */
 const handleSubmitAddCardForm = (event) => {
   event.preventDefault();
-  renderCard({name: placeInput.value, link: linkInput.value});
+  renderCard(cardsSection, {name: placeInput.value, link: linkInput.value});
   closePopup(popupNewCard);
 }
 newCardForm.addEventListener('submit', handleSubmitAddCardForm);
@@ -97,17 +99,21 @@ const generateCard = (cardData) => {
     imageViewPopup.classList.add('popup_opened');
     imageViewItem.src = cardData.link;
     imageViewTitle.textContent = cardName.textContent;
-    openPopup(imageViewPopup)});
+    imageViewItem.alt = 'На фото: ' + cardName.textContent;
+    openPopup(imageViewPopup);
+  });
   return cardElement;
 }
 
 /* ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ В РАЗМЕТКУ */
-const renderCard = (cardData) => {
-  cardsSection.prepend(generateCard(cardData));
+const renderCard = (section, cardData) => {
+  section.prepend(generateCard(cardData));
+  console.log(cardData);
 }
 
 /* ПЕРЕБОР МАССИВА ПРЕДЗАГРУЖЕННЫХ КАРТОЧКЕК И ПЕРЕДАЧА КАЖДОГО ЭЛЕМЕНТА В ФУНКЦИЮ СОЗДАНИЯ НОВОЙ КАРТОЧКИ */
 initialCards.slice().reverse()
-  .forEach((cardData) => {
-    renderCard(cardData);
+  .forEach((initialCardData) => {
+    renderCard(cardsSection, initialCardData);
   });
+
