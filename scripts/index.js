@@ -96,7 +96,6 @@ const generateCard = (cardData) => {
   //просмотр полноэкранного изображения выбранной карточки
   const imageCard = cardElement.querySelector('#image-card');
   imageCard.addEventListener('click', () => {
-    imageViewPopup.classList.add('popup_opened');
     imageViewItem.src = cardData.link;
     imageViewTitle.textContent = cardName.textContent;
     imageViewItem.alt = 'На фото: ' + cardName.textContent;
@@ -108,7 +107,6 @@ const generateCard = (cardData) => {
 /* ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ В РАЗМЕТКУ */
 const renderCard = (section, cardData) => {
   section.prepend(generateCard(cardData));
-  console.log(cardData);
 }
 
 /* ПЕРЕБОР МАССИВА ПРЕДЗАГРУЖЕННЫХ КАРТОЧКЕК И ПЕРЕДАЧА КАЖДОГО ЭЛЕМЕНТА В ФУНКЦИЮ СОЗДАНИЯ НОВОЙ КАРТОЧКИ */
