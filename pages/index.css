@@ -64,3 +64,20 @@
 @import url('../blocks/image-view/__container/image-view__container.css');
 @import url('../blocks/image-view/__item/image-view__item.css');
 @import url('../blocks/image-view/__title/image-view__title.css');
+
+.edit-form__field_type_error {
+  border-bottom-color: red;
+}
+
+.edit-form__field_error_active {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+}
+
+.button_inactive {
+  background-color: transparent;
+  color: rgba(0, 0, 0, .2);
+  border: 2px solid rgba(0, 0, 0, .2);;
+}

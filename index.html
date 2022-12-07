@@ -42,28 +42,33 @@
     <!--  PROFILE-EDIT-POPUP  -->
     <div class="popup" id="profile-edit-popup">
       <div class="popup__container">
-        <form class="edit-form" id="profile-edit-form" method="post" name="profileEditForm">
+        <form class="edit-form" id="profile-edit-form" method="post" name="profileEditForm" novalidate>
           <button class="button_type_close button" id="profile-edit-form-button-close" type="button" aria-label="Закрыть"></button>
           <h3 class="edit-form__title">Редактировать профиль</h3>
           <fieldset class="edit-form__fields">
-            <input type="text" class="edit-form__field edit-form__field_get_name" placeholder="Имя" name="name">
-            <input type="text" class="edit-form__field edit-form__field_get_job" placeholder="Деятельность" name="job">
+            <input type="text" id="name-input" class="edit-form__field edit-form__field_get_name" placeholder="Имя" name="name" minlength="2" maxlength="40" required>
+            <span class="name-input-error edit-form__field-error"></span>
+            <input type="text" class="edit-form__field edit-form__field_get_job" id="job-input" placeholder="Деятельность" name="job" minlength="2" maxlength="200" required>
+            <span class="job-input-error edit-form__field-error"></span>
+            <button class="edit-form__button-save button_submit button" type="submit">Сохранить</button>
           </fieldset>
-          <button class="edit-form__button-save button" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
     <!--  ADD-CARD-POPUP  -->
     <div class="popup" id="add-card-popup">
       <div class="popup__container">
-        <form class="edit-form" id="add-card-form" method="post" name="new card">
+        <form class="edit-form" id="add-card-form" method="post" name="new card" novalidate>
           <button class="button_type_close button" id="add-card-form-button-close" type="button" aria-label="Закрыть"></button>
           <h3 class="edit-form__title">Новое место</h3>
           <fieldset class="edit-form__fields">
-            <input type="text" required class="edit-form__field edit-form__field_get_place-name" placeholder="Название" name="place">
-            <input type="url" required class="edit-form__field edit-form__field_get_link" placeholder="Ссылка на картинку" name="link">
+            <input type="text" id="place-input" class="edit-form__field edit-form__field_get_place-name" placeholder="Название" name="place" minlength="2" maxlength="30" required>
+            <span class="edit-form__field-error place-input-error"></span>
+            <input type="url" id="link-input" class="edit-form__field edit-form__field_get_link" placeholder="Ссылка на картинку" name="link" required>
+            <span class="edit-form__field-error link-input-error"></span>
+            <button class="edit-form__button-save button_submit button" id="create-button" type="submit">Создать
+            </button>
           </fieldset>
-          <button class="edit-form__button-save button" id="create-button" type="submit">Создать</button>
         </form>
       </div>
     </div>
@@ -89,6 +94,7 @@
       </div>
     </template>
     <script type="module" src="./scripts/cards.js"></script>
+    <script type="module" src="scripts/validate.js"></script>
     <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
