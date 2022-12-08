@@ -33,6 +33,7 @@ function openPopup(targetPopup) {
 /* ЗАКРЫТИЕ ПОПАПОВ */
 function closePopup(targetPopup) {
   targetPopup.classList.remove('popup_opened');
+  targetPopup = null;
 }
 
 /* ОТКРЫТИЕ ФОРМЫ РЕДАКТИРОВАНИЯ ПРОФИЛЯ + ПЕРЕНОС ДАННЫХ СО СТРАНИЦЫ В ФОРМУ */

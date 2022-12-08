@@ -56,7 +56,10 @@
 @import url('../blocks/edit-form/__title/edit-form__title.css');
 @import url('../blocks/edit-form/__fields/edit-form__fields.css');
 @import url('../blocks/edit-form/__field/edit-form__field.css');
+@import url('../blocks/edit-form/__field-error/edit-form__field-error.css');
+@import url('../blocks/edit-form/__field/_type/edit-form_field_type_error.css');
 @import url('../blocks/edit-form/__button-save/edit-form__button-save.css');
+@import url('../blocks/button/_inactive/button_inactive.css');
 
 /*=====IMAGE-VIEW POPUP=====*/
 
@@ -64,28 +67,3 @@
 @import url('../blocks/image-view/__container/image-view__container.css');
 @import url('../blocks/image-view/__item/image-view__item.css');
 @import url('../blocks/image-view/__title/image-view__title.css');
-
-.edit-form__field_type_error {
-  border-bottom-color: red;
-}
-
-.edit-form__field_error_active {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  color: #FF0000;
-}
-
-.button_inactive {
-  background-color: transparent;
-  color: rgba(0, 0, 0, .2);
-  border: 2px solid rgba(0, 0, 0, .2);;
-}
-
-.field-container {
-  min-height: 55px;
-}
-
-.field-container:nth-child(2) {
-  min-height: 80px;
-}
