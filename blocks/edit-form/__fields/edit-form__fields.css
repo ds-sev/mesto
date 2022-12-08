@@ -1,10 +1,13 @@
 .edit-form__fields {
-  margin: 0 0 47px;
+  /*margin: 0 0 47px;*/
+  margin: 0;
   padding: 0;
   border: none;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  /*gap: 20px;*/
+
+  display: flex;
 }
 
 @media screen and (max-width: 544px) {

@@ -46,10 +46,14 @@
           <button class="button_type_close button" id="profile-edit-form-button-close" type="button" aria-label="Закрыть"></button>
           <h3 class="edit-form__title">Редактировать профиль</h3>
           <fieldset class="edit-form__fields">
+            <div class="field-container">
             <input type="text" id="name-input" class="edit-form__field edit-form__field_get_name" placeholder="Имя" name="name" minlength="2" maxlength="40" required>
             <span class="name-input-error edit-form__field-error"></span>
+            </div>
+            <div class="field-container">
             <input type="text" class="edit-form__field edit-form__field_get_job" id="job-input" placeholder="Деятельность" name="job" minlength="2" maxlength="200" required>
             <span class="job-input-error edit-form__field-error"></span>
+            </div>
             <button class="edit-form__button-save button_submit button" type="submit">Сохранить</button>
           </fieldset>
         </form>
@@ -62,10 +66,14 @@
           <button class="button_type_close button" id="add-card-form-button-close" type="button" aria-label="Закрыть"></button>
           <h3 class="edit-form__title">Новое место</h3>
           <fieldset class="edit-form__fields">
+            <div class="field-container">
             <input type="text" id="place-input" class="edit-form__field edit-form__field_get_place-name" placeholder="Название" name="place" minlength="2" maxlength="30" required>
             <span class="edit-form__field-error place-input-error"></span>
+            </div>
+            <div class="field-container">
             <input type="url" id="link-input" class="edit-form__field edit-form__field_get_link" placeholder="Ссылка на картинку" name="link" required>
             <span class="edit-form__field-error link-input-error"></span>
+            </div>
             <button class="edit-form__button-save button_submit button" id="create-button" type="submit">Создать
             </button>
           </fieldset>

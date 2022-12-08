@@ -4,4 +4,7 @@
   justify-content: center;
   transform: translate(0, -50%);
   top: 50%;
+
+
+  min-height: 330px;
 }

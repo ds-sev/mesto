@@ -81,3 +81,11 @@
   color: rgba(0, 0, 0, .2);
   border: 2px solid rgba(0, 0, 0, .2);;
 }
+
+.field-container {
+  min-height: 55px;
+}
+
+.field-container:nth-child(2) {
+  min-height: 80px;
+}
