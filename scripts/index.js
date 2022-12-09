@@ -33,7 +33,7 @@ function openPopup(targetPopup) {
 /* ЗАКРЫТИЕ ПОПАПОВ */
 function closePopup(targetPopup) {
   targetPopup.classList.remove('popup_opened');
-  targetPopup = null;
+  resetErrorMessages();
 }
 
 /* ОТКРЫТИЕ ФОРМЫ РЕДАКТИРОВАНИЯ ПРОФИЛЯ + ПЕРЕНОС ДАННЫХ СО СТРАНИЦЫ В ФОРМУ */
@@ -199,8 +199,21 @@ const enableValidation = () => {
 
 enableValidation();
 
+/* СБРОС ВСЕХ ОШИБОК ВАЛИДАЦИИ */
+const resetErrorMessages = () => {
+  const errorMessages = [...document.querySelectorAll('.edit-form__field-error')];
+  const errorFields = [...document.querySelectorAll('.edit-form__field')]
+  errorMessages.forEach((errorItem) => {
+    errorItem.textContent = '';
+  });
+  errorFields.forEach((errorField) => {
+    errorField.classList.remove('edit-form__field_type_error');
+  })
+}
 
-//const hasInvalidInput =
+
+
+
 
 // const enableValidation({
 //   formSelector: '.popup__form',
