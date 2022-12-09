@@ -1,20 +1,20 @@
 import {initialCards} from './cards.js';
 import {enableValidation, resetErrorMessages} from './validate.js';
 /* ПОЛЯ ПРОФИЛЯ НА СТРАНИЦЕ */
-const nameOnPage = document.querySelector('.profile__name');                                  //отображаемое на сайте имя
-const jobOnPage = document.querySelector('.profile__about');                                  //отображаемое на сайте занятие
+const nameOnPage = document.querySelector('.profile__name');                                 //отображаемое на сайте имя
+const jobOnPage = document.querySelector('.profile__about');                                 //отображаемое на сайте занятие
 /* РЕДАКТИРОВАНИЕ ПРОФИЛЯ */
-const profileEditButton = document.querySelector('.profile__button-edit'),                    //кнопка редактирования профиля
-  profileEditPopup = document.querySelector('#profile-edit-popup'),                       //форма редактирования профиля
-  nameInput = document.querySelector('.edit-form__field_get_name'),                       //значения поля имени в форме
-  jobInput = document.querySelector('.edit-form__field_get_job'),                         //значение поля ввода занятия в форме
-  profilePopupButtonClose = document.querySelector('#profile-edit-form-button-close'),    //кнопка закрытия формы редактирования профиля
+const profileEditButton = document.querySelector('.profile__button-edit'),                   //кнопка редактирования профиля
+  profileEditPopup = document.querySelector('#profile-edit-popup'),                          //форма редактирования профиля
+  nameInput = document.querySelector('.edit-form__field_get_name'),                          //значения поля имени в форме
+  jobInput = document.querySelector('.edit-form__field_get_job'),                            //значение поля ввода занятия в форме
+  profilePopupButtonClose = document.querySelector('#profile-edit-form-button-close'),       //кнопка закрытия формы редактирования профиля
   profileEditForm = document.querySelector('#profile-edit-form');
 /* ДОБАВЛЕНИЕ МЕСТА */
 const cardTemplate = document.querySelector('#card').content.querySelector('.card'), //доступ к содержимому template для новой карточки
-  buttonNewCard = document.querySelector('.profile__button-add'),                         //кнопка добавления новой карточки
-  popupNewCard = document.querySelector('#add-card-popup'),                               //форма добавления нового места
-  cardPopupButtonClose = document.querySelector('#add-card-form-button-close');           //кнопка закрытия формы добавления нового места
+  buttonNewCard = document.querySelector('.profile__button-add'),                             //кнопка добавления новой карточки
+  popupNewCard = document.querySelector('#add-card-popup'),                                   //форма добавления нового места
+  cardPopupButtonClose = document.querySelector('#add-card-form-button-close');               //кнопка закрытия формы добавления нового места
 /* ПРОСМОТР ИЗОБРАЖЕНИЯ */
 const imageViewPopup = document.querySelector('#image-view-popup'),
   imageViewItem = document.querySelector('.image-view__item'),
@@ -29,12 +29,12 @@ const cardsSection = document.querySelector('.cards'),
 /* ОТКРЫТИЕ ПОПАПОВ */
 function openPopup(targetPopup) {
   targetPopup.classList.add('popup_opened');
+  resetErrorMessages();                                                                                //сброс ошибок валидации
 }
 
 /* ЗАКРЫТИЕ ПОПАПОВ */
 function closePopup(targetPopup) {
   targetPopup.classList.remove('popup_opened');
-  resetErrorMessages();
 }
 
 /* ОТКРЫТИЕ ФОРМЫ РЕДАКТИРОВАНИЯ ПРОФИЛЯ + ПЕРЕНОС ДАННЫХ СО СТРАНИЦЫ В ФОРМУ */
@@ -118,3 +118,58 @@ initialCards.slice().reverse()
   .forEach((initialCardData) => {
     renderCard(cardsSection, initialCardData);
   });
+
+
+//////////////////////////////////////////////////////
+
+
+// const checkIsPopupOpen = () => {
+//   const openPopup = document.querySelector('.popup');
+//   if (openPopup.classList.contains('popup_opened')) {
+//     closePopupByEscKey();
+//   } else {
+//     console.log('not opened!')
+//   }
+//     }
+// checkIsPopupOpen();
+
+
+
+const popupOverlays = [...document.querySelectorAll('.popup')];
+popupOverlays.forEach((overlay) => {
+  overlay.addEventListener('click', (evt) => {
+    closePopup(evt.target);
+  });
+});
+
+/* ЗАКРЫТИЕ ФОРМЫ НАЖАТИЕМ ESC */
+const closePopupByEscKey = () => {
+  document.addEventListener('keydown', (evt) => {               //слушатель события
+    const popups = [...document.querySelectorAll('.popup')];                      //поиск всех попапов
+    popups.forEach((popupActive) => {
+      if (popupActive.classList.contains('popup_opened')) {                                //если среди попапов есть попап с классом  >>>>
+        if (evt.code === 'Escape') {                                                       //проверяем, какая клавиша нажата
+          const popupOpen = document.querySelector('.popup_opened')
+          closePopup(popupOpen);
+        }
+      }
+    })
+  });
+}
+
+closePopupByEscKey();
+
+
+
+//   document.addEventListener('keydown', (evt) => {
+//     if (evt.code === 'Escape') {
+//       const popupForms = [...document.querySelectorAll('.edit-form')];
+//       popupForms.forEach((form) => {
+//         closePopup(form)
+//       })
+//     }
+//
+//   })
+// })
+
+
