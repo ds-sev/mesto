@@ -1,6 +1,7 @@
 import {initialCards} from './cards.js';
 import {enableValidation, resetErrorMessages} from './validate.js';
 import {configValidation} from "./constants.js";
+
 /* ПОЛЯ ПРОФИЛЯ НА СТРАНИЦЕ */
 const nameOnPage = document.querySelector('.profile__name');                                 //отображаемое на сайте имя
 const jobOnPage = document.querySelector('.profile__about');                                 //отображаемое на сайте занятие
@@ -26,6 +27,8 @@ const cardsSection = document.querySelector('.cards'),
   newCardForm = popupNewCard.querySelector('#add-card-form'),
   placeInput = popupNewCard.querySelector('.edit-form__field_get_place-name'),                  //значения поля ввода названия места
   linkInput = popupNewCard.querySelector('.edit-form__field_get_link');
+/* ПОПАПЫ */
+const popupList = [...document.querySelectorAll('.popup')];
 
 /* ОТКРЫТИЕ ПОПАПОВ */
 function openPopup(targetPopup) {
@@ -122,8 +125,7 @@ initialCards.slice().reverse()
   });
 
 /* ЗАКРЫТИЕ ФОРМЫ КЛИКОМ ПО ОВЕРЛЕЮ */
-const popupOverlays = [...document.querySelectorAll('.popup')];
-popupOverlays.forEach((overlay) => {
+popupList.forEach((overlay) => {
   overlay.addEventListener('click', (evt) => {
     closePopup(evt.target);
   });
@@ -132,9 +134,9 @@ popupOverlays.forEach((overlay) => {
 /* ЗАКРЫТИЕ ФОРМЫ НАЖАТИЕМ ESC */
 const closePopupByEscKey = () => {
   document.addEventListener('keydown', (evt) => {
-    const popups = [...document.querySelectorAll('.popup')];
-    popups.forEach((popupActive) => {
+    popupList.forEach((popupActive) => {
       if (popupActive.classList.contains('popup_opened')) {
+        console.log(evt)
         if (evt.code === 'Escape') {
           const popupOpen = document.querySelector('.popup_opened')
           closePopup(popupOpen);
@@ -143,7 +145,6 @@ const closePopupByEscKey = () => {
     })
   })
 };
-
 closePopupByEscKey();
 
 
