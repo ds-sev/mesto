@@ -1,5 +1,6 @@
 import {initialCards} from './cards.js';
 import {enableValidation, resetErrorMessages} from './validate.js';
+import {configValidation} from "./constants.js";
 /* ПОЛЯ ПРОФИЛЯ НА СТРАНИЦЕ */
 const nameOnPage = document.querySelector('.profile__name');                                 //отображаемое на сайте имя
 const jobOnPage = document.querySelector('.profile__about');                                 //отображаемое на сайте занятие
@@ -23,13 +24,13 @@ const imageViewPopup = document.querySelector('#image-view-popup'),
 /* ДАННЫЕ КАРТОЧЕК */
 const cardsSection = document.querySelector('.cards'),
   newCardForm = popupNewCard.querySelector('#add-card-form'),
-  placeInput = popupNewCard.querySelector('.edit-form__field_get_place-name'),                             //значения поля ввода названия места
+  placeInput = popupNewCard.querySelector('.edit-form__field_get_place-name'),                  //значения поля ввода названия места
   linkInput = popupNewCard.querySelector('.edit-form__field_get_link');
 
 /* ОТКРЫТИЕ ПОПАПОВ */
 function openPopup(targetPopup) {
   targetPopup.classList.add('popup_opened');
-  resetErrorMessages();                                                                                //сброс ошибок валидации
+  resetErrorMessages(configValidation);                                                                   //сброс ошибок валидации
 }
 
 /* ЗАКРЫТИЕ ПОПАПОВ */
@@ -42,13 +43,13 @@ profileEditButton.addEventListener('click', () => {
   nameInput.value = nameOnPage.textContent;
   jobInput.value = jobOnPage.textContent;
   openPopup(profileEditPopup);
-  enableValidation();
+  enableValidation(configValidation);
 });
 /* ОТКРЫТИЕ ФОРМЫ ДОБАВЛЕНИЯ НОВОГО МЕСТА + СБРОС ДАННЫХ ИЗ ПОЛЕЙ */
 buttonNewCard.addEventListener('click', () => {
   newCardForm.reset();
   openPopup(popupNewCard);
-  enableValidation();
+  enableValidation(configValidation);
 });
 
 profilePopupButtonClose.addEventListener('click', () => {
@@ -83,6 +84,7 @@ newCardForm.addEventListener('submit', handleSubmitAddCardForm);
 const handleTargetCardDelete = (evt) => {
   evt.target.closest('.card').remove()
 }
+
 /* ФУНКЦИЯ СОЗДАНИЯ КАРТОЧКИ */
 const generateCard = (cardData) => {
   const cardElement = cardTemplate.cloneNode(true);
@@ -119,22 +121,7 @@ initialCards.slice().reverse()
     renderCard(cardsSection, initialCardData);
   });
 
-
-//////////////////////////////////////////////////////
-
-
-// const checkIsPopupOpen = () => {
-//   const openPopup = document.querySelector('.popup');
-//   if (openPopup.classList.contains('popup_opened')) {
-//     closePopupByEscKey();
-//   } else {
-//     console.log('not opened!')
-//   }
-//     }
-// checkIsPopupOpen();
-
-
-
+/* ЗАКРЫТИЕ ФОРМЫ КЛИКОМ ПО ОВЕРЛЕЮ */
 const popupOverlays = [...document.querySelectorAll('.popup')];
 popupOverlays.forEach((overlay) => {
   overlay.addEventListener('click', (evt) => {
@@ -144,32 +131,19 @@ popupOverlays.forEach((overlay) => {
 
 /* ЗАКРЫТИЕ ФОРМЫ НАЖАТИЕМ ESC */
 const closePopupByEscKey = () => {
-  document.addEventListener('keydown', (evt) => {               //слушатель события
-    const popups = [...document.querySelectorAll('.popup')];                      //поиск всех попапов
+  document.addEventListener('keydown', (evt) => {
+    const popups = [...document.querySelectorAll('.popup')];
     popups.forEach((popupActive) => {
-      if (popupActive.classList.contains('popup_opened')) {                                //если среди попапов есть попап с классом  >>>>
-        if (evt.code === 'Escape') {                                                       //проверяем, какая клавиша нажата
+      if (popupActive.classList.contains('popup_opened')) {
+        if (evt.code === 'Escape') {
           const popupOpen = document.querySelector('.popup_opened')
           closePopup(popupOpen);
         }
       }
     })
-  });
-}
+  })
+};
 
 closePopupByEscKey();
-
-
-
-//   document.addEventListener('keydown', (evt) => {
-//     if (evt.code === 'Escape') {
-//       const popupForms = [...document.querySelectorAll('.edit-form')];
-//       popupForms.forEach((form) => {
-//         closePopup(form)
-//       })
-//     }
-//
-//   })
-// })
 
 
