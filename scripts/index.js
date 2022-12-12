@@ -36,11 +36,13 @@ function openPopup(targetPopup) {
   if (targetPopup.querySelector('.edit-form') !== null) {
     resetErrorMessages(configValidation);
   }
+  document.addEventListener('keydown', closePopupByEscKey)
 }
 
 /* ЗАКРЫТИЕ ПОПАПОВ */
 function closePopup(targetPopup) {
   targetPopup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEscKey);
 }
 
 /* ОТКРЫТИЕ ФОРМЫ РЕДАКТИРОВАНИЯ ПРОФИЛЯ + ПЕРЕНОС ДАННЫХ СО СТРАНИЦЫ В ФОРМУ */
@@ -129,24 +131,18 @@ initialCards.slice().reverse()
 /* ЗАКРЫТИЕ ФОРМЫ КЛИКОМ ПО ОВЕРЛЕЮ */
 popupList.forEach((overlay) => {
   overlay.addEventListener('click', (evt) => {
+    console.log(evt);
     closePopup(evt.target);
-  });
-});
+  })
+})
 
 /* ЗАКРЫТИЕ ФОРМЫ НАЖАТИЕМ ESC */
-const closePopupByEscKey = () => {
-  document.addEventListener('keydown', (evt) => {
-    popupList.forEach((popupActive) => {
-      if (popupActive.classList.contains('popup_opened')) {
-        console.log(evt)
-        if (evt.code === 'Escape') {
-          const popupOpen = document.querySelector('.popup_opened')
-          closePopup(popupOpen);
-        }
-      }
-    })
-  })
-};
-closePopupByEscKey();
+const closePopupByEscKey = (evt) => {
+  console.log(evt)
+  if (evt.code === 'Escape') {
+    const popupOpen = document.querySelector('.popup_opened')
+    closePopup(popupOpen);
+  }
+}
 
 
