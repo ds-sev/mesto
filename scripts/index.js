@@ -52,22 +52,23 @@ profileEditButton.addEventListener('click', () => {
   nameInput.value = nameOnPage.textContent;
   jobInput.value = jobOnPage.textContent;
   openPopup(profileEditPopup);
-});
+})
+
 /* ОТКРЫТИЕ ФОРМЫ ДОБАВЛЕНИЯ НОВОГО МЕСТА + СБРОС ДАННЫХ ИЗ ПОЛЕЙ */
 buttonNewCard.addEventListener('click', () => {
   newCardForm.reset();
   openPopup(popupNewCard);
-});
+})
 
 profilePopupButtonClose.addEventListener('click', () => {
   closePopup(profileEditPopup)
-});
+})
 cardPopupButtonClose.addEventListener('click', () => {
   closePopup(popupNewCard)
-});
+})
 imageViewCloseButton.addEventListener('click', () => {
   closePopup(imageViewPopup)
-});
+})
 
 /* ОТПРАВКА ДАННЫХ, ПОЛУЧЕННЫХ В ФОРМЕ РЕДАКТИРОВАНИЯ ПРОФИЛЯ */
 function handleProfileEditFormSubmitData(evt) {
@@ -126,7 +127,7 @@ const renderCard = (section, cardData) => {
 initialCards.slice().reverse()
   .forEach((initialCardData) => {
     renderCard(cardsSection, initialCardData);
-  });
+  })
 
 /* ЗАКРЫТИЕ ФОРМЫ КЛИКОМ ПО ОВЕРЛЕЮ */
 popupList.forEach((overlay) => {

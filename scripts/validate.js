@@ -1,5 +1,5 @@
 /* IMPORTS */
-import {configValidation} from "./constants.js";
+import {configValidation} from "./constants.js"
 
 /* ФУНКЦИЯ ДОБАВЛЕНИЯ ОТОБРАЖЕНИЯ ОШИБКИ */
 const showInputError = (formElement, inputElement, errorMessage, config) => {
@@ -51,7 +51,7 @@ function enableValidation(config) {
       evt.preventDefault();
     });
     setEventListeners(formElement, config)
-  });
+  })
 }
 
 /*  ПРОВЕРКА ВАЛИДНОСТИ ПОЛЯ ВВОДА */
@@ -80,8 +80,8 @@ const startCheckForButton = (targetPopup, config) => {
   toggleButtonState(formElement, inputList, config)
 }
 
-enableValidation(configValidation);
+enableValidation(configValidation)
 
 /* EXPORTS */
-export {resetErrorMessages};
+export {resetErrorMessages}
 export {startCheckForButton}

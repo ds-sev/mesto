@@ -8,4 +8,4 @@ const configValidation = {
 }
 
 /* EXPORTS */
-export {configValidation};
+export {configValidation}
