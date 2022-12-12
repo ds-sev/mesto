@@ -1,6 +1,6 @@
 /* IMPORTS */
 import {initialCards} from './cards.js';
-import {resetErrorMessages} from './validate.js';
+import {resetErrorMessages, startCheckForButton} from './validate.js';
 import {configValidation} from "./constants.js";
 
 /* ПОЛЯ ПРОФИЛЯ НА СТРАНИЦЕ */
@@ -36,6 +36,7 @@ function openPopup(targetPopup) {
   targetPopup.classList.add('popup_opened');
   if (targetPopup.querySelector('.edit-form') !== null) {
     resetErrorMessages(configValidation);
+    startCheckForButton(targetPopup, configValidation);
   }
   document.addEventListener('keydown', closePopupByEscKey)
 }

@@ -33,7 +33,8 @@ const hasInvalidInput = (inputList) => {
 }
 
 /*  ПЕРЕКЛЮЧЕНИЕ АКТИВНОСТИ КНОПКИ ОТПРАВКИ ФОРМЫ */
-const toggleButtonState = (inputList, buttonElement, config) => {
+const toggleButtonState = (formElement, inputList, config) => {
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.disabled = true;
@@ -56,12 +57,10 @@ function enableValidation(config) {
 /*  ПРОВЕРКА ВАЛИДНОСТИ ПОЛЯ ВВОДА */
 const setEventListeners = (formElement, config) => {
   const inputList = [...formElement.querySelectorAll(config.inputSelector)];
-  const buttonElement = formElement.querySelector(config.submitButtonSelector);
-  toggleButtonState(inputList, buttonElement, config);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
       checkInputValidity(formElement, inputElement, config);
-      toggleButtonState(inputList, buttonElement, config);
+      toggleButtonState(formElement, inputList, config);
     })
   })
 }
@@ -74,7 +73,15 @@ const resetErrorMessages = (config) => {
   errorFields.forEach((errorField) => errorField.classList.remove(config.inputErrorClass));
 }
 
+/* ПРОВЕРКА ВАЛИДНОСТИ ДЛЯ СОСТОЯНИЯ КНОПКИ ПРИ ОТКРЫТИИ ФОРМЫ */
+const startCheckForButton = (targetPopup, config) => {
+  const formElement = targetPopup.querySelector(config.formSelector);
+  const inputList = [...formElement.querySelectorAll(config.inputSelector)];
+  toggleButtonState(formElement, inputList, config)
+}
+
 enableValidation(configValidation);
 
 /* EXPORTS */
 export {resetErrorMessages};
+export {startCheckForButton}

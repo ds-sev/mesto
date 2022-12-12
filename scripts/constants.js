@@ -5,7 +5,7 @@ const configValidation = {
   inactiveButtonClass: 'button_inactive',
   inputErrorClass: 'edit-form__field_type_error',
   errorClass: 'edit-form__field_error_active'
-};
+}
 
 /* EXPORTS */
 export {configValidation};
