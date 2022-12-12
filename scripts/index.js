@@ -33,7 +33,9 @@ const popupList = [...document.querySelectorAll('.popup')];
 /* ОТКРЫТИЕ ПОПАПОВ */
 function openPopup(targetPopup) {
   targetPopup.classList.add('popup_opened');
-  resetErrorMessages(configValidation);                                                                   //сброс ошибок валидации
+  if (targetPopup.querySelector('.edit-form') !== null) {
+    resetErrorMessages(configValidation);
+  }
 }
 
 /* ЗАКРЫТИЕ ПОПАПОВ */
