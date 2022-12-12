@@ -1,5 +1,6 @@
+/* IMPORTS */
 import {initialCards} from './cards.js';
-import {enableValidation, resetErrorMessages} from './validate.js';
+import {resetErrorMessages} from './validate.js';
 import {configValidation} from "./constants.js";
 
 /* ПОЛЯ ПРОФИЛЯ НА СТРАНИЦЕ */
@@ -50,13 +51,11 @@ profileEditButton.addEventListener('click', () => {
   nameInput.value = nameOnPage.textContent;
   jobInput.value = jobOnPage.textContent;
   openPopup(profileEditPopup);
-  enableValidation(configValidation);
 });
 /* ОТКРЫТИЕ ФОРМЫ ДОБАВЛЕНИЯ НОВОГО МЕСТА + СБРОС ДАННЫХ ИЗ ПОЛЕЙ */
 buttonNewCard.addEventListener('click', () => {
   newCardForm.reset();
   openPopup(popupNewCard);
-  enableValidation(configValidation);
 });
 
 profilePopupButtonClose.addEventListener('click', () => {
@@ -139,7 +138,6 @@ popupList.forEach((overlay) => {
 
 /* ЗАКРЫТИЕ ФОРМЫ НАЖАТИЕМ ESC */
 const closePopupByEscKey = (evt) => {
-  console.log(evt)
   if (evt.code === 'Escape') {
     const popupOpen = document.querySelector('.popup_opened')
     closePopup(popupOpen);

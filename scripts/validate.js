@@ -1,6 +1,7 @@
-export {enableValidation, resetErrorMessages};
+/* IMPORTS */
+import {configValidation} from "./constants.js";
 
-/* ФУНКЦИЯ ДОБАВЛЕНИЕ ОТОБРАЖЕНИЯ ОШИБКИ */
+/* ФУНКЦИЯ ДОБАВЛЕНИЯ ОТОБРАЖЕНИЯ ОШИБКИ */
 const showInputError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(config.inputErrorClass);                                                  //добавляем класс для визуального отображения ошибки
@@ -72,3 +73,8 @@ const resetErrorMessages = (config) => {
   errorMessages.forEach((errorItem) => errorItem.textContent = '');
   errorFields.forEach((errorField) => errorField.classList.remove(config.inputErrorClass));
 }
+
+enableValidation(configValidation);
+
+/* EXPORTS */
+export {resetErrorMessages};

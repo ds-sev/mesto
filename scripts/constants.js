@@ -1,5 +1,3 @@
-export {configValidation};
-
 const configValidation = {
   formSelector: '.edit-form',
   inputSelector: '.edit-form__field',
@@ -9,4 +7,5 @@ const configValidation = {
   errorClass: 'edit-form__field_error_active'
 };
 
-
+/* EXPORTS */
+export {configValidation};
