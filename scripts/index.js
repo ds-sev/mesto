@@ -131,8 +131,9 @@ initialCards.slice().reverse()
 /* ЗАКРЫТИЕ ФОРМЫ КЛИКОМ ПО ОВЕРЛЕЮ */
 popupList.forEach((overlay) => {
   overlay.addEventListener('click', (evt) => {
-    console.log(evt);
-    closePopup(evt.target);
+    if (evt.target === evt.currentTarget) {
+      closePopup(evt.target);
+    }
   })
 })
 
