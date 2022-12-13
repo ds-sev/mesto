@@ -6,6 +6,7 @@
   border-top-right-radius: 10px;
   transition: ease-out .2s;
   will-change: transform;
+  background-color: gray;
 }
 
 .card__photo-container:hover {
