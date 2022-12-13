@@ -34,10 +34,6 @@ const popupList = [...document.querySelectorAll('.popup')];
 /* ОТКРЫТИЕ ПОПАПОВ */
 function openPopup(targetPopup) {
   targetPopup.classList.add('popup_opened');
-  if (targetPopup.querySelector('.edit-form') !== null) {
-    resetErrorMessages(configValidation);
-    startCheckForButton(targetPopup, configValidation);
-  }
   document.addEventListener('keydown', closePopupByEscKey)
 }
 
@@ -52,11 +48,15 @@ profileEditButton.addEventListener('click', () => {
   nameInput.value = nameOnPage.textContent;
   jobInput.value = jobOnPage.textContent;
   openPopup(profileEditPopup);
+  resetErrorMessages(configValidation);
+  startCheckForButton(profileEditPopup, configValidation);
 })
 
 /* ОТКРЫТИЕ ФОРМЫ ДОБАВЛЕНИЯ НОВОГО МЕСТА + СБРОС ДАННЫХ ИЗ ПОЛЕЙ */
 buttonNewCard.addEventListener('click', () => {
   newCardForm.reset();
+  resetErrorMessages(configValidation);
+  startCheckForButton(popupNewCard, configValidation);
   openPopup(popupNewCard);
 })
 
@@ -112,7 +112,7 @@ const generateCard = (cardData) => {
   imageCard.addEventListener('click', () => {
     imageViewItem.src = cardData.link;
     imageViewTitle.textContent = cardName.textContent;
-    imageViewItem.alt = 'На фото: ' + cardName.textContent;
+    imageViewItem.alt = `На фото: ${cardName.textContent}`;
     openPopup(imageViewPopup);
   });
   return cardElement;
