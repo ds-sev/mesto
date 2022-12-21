@@ -1,8 +1,7 @@
 /* IMPORTS */
-import {initialCards} from './cards.js';
-import {resetErrorMessages, startCheckForButton} from './validate.js';
-import {configValidation} from "./constants.js";
+import {initialCards} from './initialCards.js';
 import {Card} from "./Card.js";
+import {FormValidator} from "./FormValidator.js";
 
 /* ПОЛЯ ПРОФИЛЯ НА СТРАНИЦЕ */
 const nameOnPage = document.querySelector('.profile__name');                                 //отображаемое на сайте имя
@@ -48,15 +47,15 @@ profileEditButton.addEventListener('click', () => {
   nameInput.value = nameOnPage.textContent;
   jobInput.value = jobOnPage.textContent;
   openPopup(profileEditPopup);
-  resetErrorMessages(configValidation);
-  startCheckForButton(profileEditPopup, configValidation);
+  profileFormValidation._resetErrorMessages();
+  profileFormValidation._buttonStateAtOpen();
 })
 
 /* ОТКРЫТИЕ ФОРМЫ ДОБАВЛЕНИЯ НОВОГО МЕСТА + СБРОС ДАННЫХ ИЗ ПОЛЕЙ */
 buttonNewCard.addEventListener('click', () => {
   newCardForm.reset();
-  resetErrorMessages(configValidation);
-  startCheckForButton(popupNewCard, configValidation);
+newCardFormValidation._resetErrorMessages();
+  newCardFormValidation._buttonStateAtOpen();
   openPopup(popupNewCard);
 })
 
@@ -77,7 +76,6 @@ function handleProfileEditFormSubmitData(evt) {
   jobOnPage.textContent = jobInput.value;
   closePopup(profileEditPopup);
 }
-
 profileEditForm.addEventListener('submit', handleProfileEditFormSubmitData);
 
 /* ЗАКРЫТИЕ ФОРМЫ КЛИКОМ ПО ОВЕРЛЕЮ */
@@ -88,6 +86,7 @@ popupList.forEach((overlay) => {
     }
   })
 })
+
 /* ЗАКРЫТИЕ ФОРМЫ НАЖАТИЕМ ESC */
 const closePopupByEscKey = (evt) => {
   if (evt.code === 'Escape') {
@@ -95,6 +94,7 @@ const closePopupByEscKey = (evt) => {
     closePopup(popupOpen);
   }
 }
+
 /* ОТКРЫТИЕ ПОЛНОЭКРАННОГО ИЗОБРАЖЕНИЯ */
 const handleImageClick = (link, name) => {
   imageViewItem.src = link;
@@ -110,15 +110,24 @@ const handleSubmitAddCardForm = (event) => {
   closePopup(popupNewCard);
 }
 newCardForm.addEventListener('submit', handleSubmitAddCardForm);
+
 /* ДОБАВЛЕНИЕ КАРТОЧКИ В РАЗМЕТКУ */
 const renderCard = (cardData, section) => {
   const card = new Card(cardData, handleImageClick)
   section.prepend(card.generateCard());
 }
+
 /* ПЕРЕБОР МАССИВА ПРЕДЗАГРУЖЕННЫХ КАРТОЧКЕК И ОТРИСОВКА В РАЗМЕТКУ */
 initialCards.reverse().forEach((initialCardData) => {
   renderCard(initialCardData, cardsSection)
 })
+
+/* СОЗДАНИЕ ЭКЗЕМПЛЯРА КЛАССА ВАЛИДАЦИИ ДЛЯ КАЖДОЙ ПРОВЕРЯЕМОЙ ФОРМЫ */
+const profileFormValidation = new FormValidator(profileEditForm);
+profileFormValidation.enableValidation();
+
+const newCardFormValidation = new FormValidator(newCardForm);
+newCardFormValidation.enableValidation();
 
 /* EXPORTS */
 export {handleImageClick}

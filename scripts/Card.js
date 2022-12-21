@@ -1,9 +1,9 @@
 /* CARD-CLASS */
 class Card {
   constructor(cardData, handleImageClick) {
-    this._handleImageClick = handleImageClick;
-    this._name = cardData.name;
-    this._link = cardData.link;
+    this._handleImageClick = handleImageClick
+    this._name = cardData.name
+    this._link = cardData.link
   }
 
   _getTemplate() {
