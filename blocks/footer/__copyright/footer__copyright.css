@@ -14,8 +14,3 @@
     line-height: 17px;
   }
 }
-
-.footer__copyright:hover {
-  transition: ease-in .1s;
-  opacity: .6;
-}
