@@ -46,15 +46,15 @@ function closePopup(targetPopup) {
 profileEditButton.addEventListener('click', () => {
   nameInput.value = nameOnPage.textContent;
   jobInput.value = jobOnPage.textContent;
-  openPopup(profileEditPopup);
   profileFormValidation._resetErrorMessages();
   profileFormValidation._buttonStateAtOpen();
+  openPopup(profileEditPopup);
 })
 
 /* ОТКРЫТИЕ ФОРМЫ ДОБАВЛЕНИЯ НОВОГО МЕСТА + СБРОС ДАННЫХ ИЗ ПОЛЕЙ */
 buttonNewCard.addEventListener('click', () => {
   newCardForm.reset();
-newCardFormValidation._resetErrorMessages();
+  newCardFormValidation._resetErrorMessages();
   newCardFormValidation._buttonStateAtOpen();
   openPopup(popupNewCard);
 })
