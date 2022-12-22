@@ -1,17 +1,14 @@
 /* CARD-CLASS */
 class Card {
-  constructor(cardData, handleImageClick) {
+  constructor(template, cardData, handleImageClick) {
     this._handleImageClick = handleImageClick
     this._name = cardData.name
     this._link = cardData.link
+    this._template = template
   }
 
   _getTemplate() {
-    return document
-      .querySelector('#card')
-      .content
-      .querySelector('.card')
-      .cloneNode(true)
+    return this._template.cloneNode(true)
   }
 
   _handleTargetCardDelete(evt) {

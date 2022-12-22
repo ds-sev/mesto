@@ -31,6 +31,9 @@ const cardsSection = document.querySelector('.cards'),
   linkInput = popupNewCard.querySelector('.edit-form__field_get_link');
 /* ПОПАПЫ */
 const popupList = [...document.querySelectorAll('.popup')];
+
+const cardTemplate = document.querySelector('#card').content.querySelector('.card')
+
 const configValidation = {
   formSelector: '.edit-form',
   inputSelector: '.edit-form__field',
@@ -94,7 +97,7 @@ const handleSubmitAddCardForm = (event) => {
 
 /* СОЗДАНИЕ КАРТОЧКИ */
 const createCard = (cardData, handleImageClick) => {
-  return new Card(cardData, handleImageClick).generateCard()
+  return new Card(cardTemplate, cardData, handleImageClick).generateCard()
 }
 /* ДОБАВЛЕНИЕ КАРТОЧКИ В РАЗМЕТКУ */
 const renderCard = (cardData, section) => {
