@@ -1,16 +1,16 @@
 /* НАСТРОЙКА ВАЛИДАЦИИ ПОЛЕЙ ФОРМЫ */
 class FormValidator {
-  constructor(formElement) {
-    this._configValidation = {
-      formSelector: '.edit-form',
-      inputSelector: '.edit-form__field',
-      submitButtonSelector: '.button_submit',
-      inactiveButtonClass: 'button_inactive',
-      inputErrorClass: 'edit-form__field_type_error',
-      errorClass: 'edit-form__field_error_active',
-    }
+  constructor(config, formElement) {
+    this._config = config
+    this._formSelector = config.formSelector
+    this._inputSelector = config.inputSelector
+    this._submitButtonSelector = config.submitButtonSelector
+    this._inactiveButtonClass = config.inactiveButtonClass
+    this._inputErrorClass = config.inputErrorClass
+    this._errorClass = config.errorClass
+
     this._formElement = formElement;
-    this._inputList = [...formElement.querySelectorAll(this._configValidation.inputSelector)]
+    this._inputList = [...formElement.querySelectorAll(this._inputSelector)]
   }
 
   enableValidation() {
@@ -34,27 +34,27 @@ class FormValidator {
     }
   }
 
-  _showInputError(inputElement) {
-    inputElement.classList.add(this._configValidation.inputErrorClass)
+  _showInputError(inputElement, errorMessage) {
+    inputElement.classList.add(this._inputErrorClass)
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`)
     errorElement.textContent = inputElement.validationMessage
-    errorElement.classList.add(this._configValidation.errorClass)
+    errorElement.classList.add(this._errorClass)
   }
 
   _hideInputError(inputElement) {
-    inputElement.classList.remove(this._configValidation.inputErrorClass)
+    inputElement.classList.remove(this._inputErrorClass)
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`)
     errorElement.textContent = ''
-    errorElement.classList.remove(this._configValidation.errorClass)
+    errorElement.classList.remove(this._errorClass)
   }
 
   _toggleButtonState() {
-    const buttonElement = this._formElement.querySelector(this._configValidation.submitButtonSelector)
+    const buttonElement = this._formElement.querySelector(this._submitButtonSelector)
     if (this._hasInvalidInput(this._inputList)) {
-      buttonElement.classList.add(this._configValidation.inactiveButtonClass)
+      buttonElement.classList.add(this._inactiveButtonClass)
       buttonElement.disabled = true
     } else {
-      buttonElement.classList.remove(this._configValidation.inactiveButtonClass)
+      buttonElement.classList.remove(this._inactiveButtonClass)
       buttonElement.disabled = false
     }
   }
@@ -64,18 +64,12 @@ class FormValidator {
       return !inputElement.validity.valid
     })
   }
-  /* СОСТОЯНИЕ ПОЛЕЙ И КНОПОК ПРИ ОТКРЫТИИ ФОРМ */
-  //сброс ошибок полей
-  _resetErrorMessages() {
-    const errorMessages = [...this._formElement.querySelectorAll('.edit-form__field-error')]
-    const errorFields = [...this._formElement.querySelectorAll('.edit-form__field')]
-    errorMessages.forEach((errorItem) => errorItem.textContent = '')
-    errorFields.forEach((errorField) => errorField.classList.remove(this._configValidation.inputErrorClass));
-  }
-  //обновление состояния кнопки
-  _buttonStateAtOpen() {
-    const inputList = [...this._formElement.querySelectorAll(this._configValidation.inputSelector)]
-    this._toggleButtonState(inputList)
+  /* СБРОС ОШИБОК ПРИ ПОВТОРНОМ ОТКРЫТИИ */
+  resetValidation() {
+    this._inputList.forEach((input) => {
+      this._hideInputError(input)
+    })
+    this._toggleButtonState()
   }
 }
 

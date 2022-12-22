@@ -31,6 +31,14 @@ const cardsSection = document.querySelector('.cards'),
   linkInput = popupNewCard.querySelector('.edit-form__field_get_link');
 /* ПОПАПЫ */
 const popupList = [...document.querySelectorAll('.popup')];
+const configValidation = {
+  formSelector: '.edit-form',
+  inputSelector: '.edit-form__field',
+  submitButtonSelector: '.button_submit',
+  inactiveButtonClass: 'button_inactive',
+  inputErrorClass: 'edit-form__field_type_error',
+  errorClass: 'edit-form__field_error_active',
+}
 
 /*** FUNCTIONS ***/
 
@@ -99,10 +107,10 @@ initialCards.reverse().forEach((initialCardData) => {
 })
 
 /* СОЗДАНИЕ ЭКЗЕМПЛЯРА КЛАССА ВАЛИДАЦИИ ДЛЯ КАЖДОЙ ПРОВЕРЯЕМОЙ ФОРМЫ */
-const profileFormValidation = new FormValidator(profileEditForm);
+const profileFormValidation = new FormValidator(configValidation, profileEditForm);
 profileFormValidation.enableValidation();
 
-const newCardFormValidation = new FormValidator(newCardForm);
+const newCardFormValidation = new FormValidator(configValidation, newCardForm);
 newCardFormValidation.enableValidation();
 
 /*** EVENT LISTENERS ***/
@@ -111,21 +119,16 @@ newCardFormValidation.enableValidation();
 profileEditButton.addEventListener('click', () => {
   nameInput.value = nameOnPage.textContent;
   jobInput.value = jobOnPage.textContent;
-  profileFormValidation._resetErrorMessages();
-  profileFormValidation._buttonStateAtOpen();
+  profileFormValidation.resetValidation()
   openPopup(profileEditPopup);
 })
 /* ОТКРЫТИЕ ФОРМЫ ДОБАВЛЕНИЯ НОВОГО МЕСТА + СБРОС ДАННЫХ ИЗ ПОЛЕЙ */
 buttonNewCard.addEventListener('click', () => {
   newCardForm.reset();
-  newCardFormValidation._resetErrorMessages();
-  newCardFormValidation._buttonStateAtOpen();
+  newCardFormValidation.resetValidation();
   openPopup(popupNewCard);
 })
 
-// profilePopupButtonClose.addEventListener('click', () => closePopup(profileEditPopup))
-// cardPopupButtonClose.addEventListener('click', () => closePopup(popupNewCard))
-// imageViewCloseButton.addEventListener('click', () => closePopup(imageViewPopup))
 profileEditForm.addEventListener('submit', handleProfileEditFormSubmitData);
 newCardForm.addEventListener('submit', handleSubmitAddCardForm);
 
