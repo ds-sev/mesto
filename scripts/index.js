@@ -97,7 +97,7 @@ const handleSubmitAddCardForm = (event) => {
 
 /* СОЗДАНИЕ КАРТОЧКИ */
 const createCard = (cardData, handleImageClick) => {
-  return new Card(cardTemplate, cardData, handleImageClick).generateCard()
+  return new Card(cardData, cardTemplate, handleImageClick).generateCard()
 }
 /* ДОБАВЛЕНИЕ КАРТОЧКИ В РАЗМЕТКУ */
 const renderCard = (cardData, section) => {

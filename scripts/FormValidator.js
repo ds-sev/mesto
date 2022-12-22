@@ -1,14 +1,11 @@
 /* НАСТРОЙКА ВАЛИДАЦИИ ПОЛЕЙ ФОРМЫ */
 class FormValidator {
   constructor(config, formElement) {
-    this._config = config
-    this._formSelector = config.formSelector
     this._inputSelector = config.inputSelector
     this._submitButtonSelector = config.submitButtonSelector
     this._inactiveButtonClass = config.inactiveButtonClass
     this._inputErrorClass = config.inputErrorClass
     this._errorClass = config.errorClass
-
     this._formElement = formElement;
     this._inputList = [...formElement.querySelectorAll(this._inputSelector)]
   }
@@ -17,14 +14,6 @@ class FormValidator {
     this._setEventListeners()
   }
 
-  _setEventListeners() {
-    this._inputList.forEach((inputElement) => {
-      inputElement.addEventListener('input', () => {
-        this._checkInputValidity(inputElement)
-        this._toggleButtonState()
-      })
-    })
-  }
   /*  ПРОВЕРКА ВАЛИДНОСТИ ПОЛЯ ВВОДА */
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
@@ -70,6 +59,15 @@ class FormValidator {
       this._hideInputError(input)
     })
     this._toggleButtonState()
+  }
+
+  _setEventListeners() {
+    this._inputList.forEach((inputElement) => {
+      inputElement.addEventListener('input', () => {
+        this._checkInputValidity(inputElement)
+        this._toggleButtonState()
+      })
+    })
   }
 }
 

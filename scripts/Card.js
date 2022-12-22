@@ -1,40 +1,43 @@
 /* CARD-CLASS */
 class Card {
-  constructor(template, cardData, handleImageClick) {
+  constructor(cardData, template, handleImageClick) {
+    this._template =  template
     this._handleImageClick = handleImageClick
     this._name = cardData.name
     this._link = cardData.link
-    this._template = template
   }
 
   _getTemplate() {
     return this._template.cloneNode(true)
   }
 
-  _handleTargetCardDelete(evt) {
-    evt.target.closest('.card').remove()
+  generateCard() {
+    this._element = this._getTemplate()
+    this._cardImage = this._element.querySelector('.card__photo-container')
+    this._cardImage.style.backgroundImage = `url(${this._link}`
+    this._element.querySelector('.card__title').textContent = this._name
+    this._setEventListeners()
+    return this._element
+  }
+
+  _remove() {
+    this._element.remove()
+  }
+
+  _like() {
+    this._likeBtn.classList.toggle('card__button-like_active')
   }
 
   _setEventListeners() {
     //переключатель лайков
-    const likeButton = this._element.querySelector('.card__button-like')
-    likeButton.addEventListener('click', () => {
-      likeButton.classList.toggle('card__button-like_active')
-    })
+    this._likeBtn = this._element.querySelector('.card__button-like')
+    this._likeBtn.addEventListener('click', () => this._like())
     //слушатель для кнопки удаления карточки
-    const deleteButton = this._element.querySelector('#card-button-delete')
-    deleteButton.addEventListener('click', this._handleTargetCardDelete)
+    const deleteButton = this._element.querySelector('.card__button-delete')
+    deleteButton.addEventListener('click', () => this._remove())
     //слушатель для открытия полноэкранного изображения
-    this._element.querySelector('.card__photo-container').addEventListener('click', () =>
+    this._cardImage.addEventListener('click', () =>
       this._handleImageClick(this._link, this._name))
-  }
-  //возврат готовой к отрисовке карточки
-  generateCard() {
-    this._element = this._getTemplate()
-    this._element.querySelector('.card__title').textContent = this._name
-    this._element.querySelector('.card__photo-container').style.backgroundImage = `url(${this._link}`
-    this._setEventListeners()
-    return this._element
   }
 }
 
