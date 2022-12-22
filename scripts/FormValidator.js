@@ -10,19 +10,18 @@ class FormValidator {
       errorClass: 'edit-form__field_error_active',
     }
     this._formElement = formElement;
+    this._inputList = [...formElement.querySelectorAll(this._configValidation.inputSelector)]
   }
 
   enableValidation() {
-    this._formElement.addEventListener('submit', (evt) => evt.preventDefault())
     this._setEventListeners()
   }
 
   _setEventListeners() {
-    const inputList = [...this._formElement.querySelectorAll(this._configValidation.inputSelector)]
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement)
-        this._toggleButtonState(inputList)
+        this._toggleButtonState()
       })
     })
   }
@@ -49,9 +48,9 @@ class FormValidator {
     errorElement.classList.remove(this._configValidation.errorClass)
   }
 
-  _toggleButtonState(inputList) {
+  _toggleButtonState() {
     const buttonElement = this._formElement.querySelector(this._configValidation.submitButtonSelector)
-    if (this._hasInvalidInput(inputList)) {
+    if (this._hasInvalidInput(this._inputList)) {
       buttonElement.classList.add(this._configValidation.inactiveButtonClass)
       buttonElement.disabled = true
     } else {
@@ -60,8 +59,8 @@ class FormValidator {
     }
   }
 
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => {
+  _hasInvalidInput() {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid
     })
   }
