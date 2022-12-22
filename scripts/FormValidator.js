@@ -7,7 +7,6 @@ class FormValidator {
     this._inputErrorClass = config.inputErrorClass
     this._errorClass = config.errorClass
     this._formElement = formElement;
-    this._inputList = [...formElement.querySelectorAll(this._inputSelector)]
   }
 
   enableValidation() {
@@ -23,7 +22,7 @@ class FormValidator {
     }
   }
 
-  _showInputError(inputElement, errorMessage) {
+  _showInputError(inputElement) {
     inputElement.classList.add(this._inputErrorClass)
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`)
     errorElement.textContent = inputElement.validationMessage
@@ -62,6 +61,7 @@ class FormValidator {
   }
 
   _setEventListeners() {
+    this._inputList = [...this._formElement.querySelectorAll(this._inputSelector)]
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement)
