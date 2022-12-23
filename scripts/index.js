@@ -32,7 +32,7 @@ const cardsSection = document.querySelector('.cards'),
 /* ПОПАПЫ */
 const popupList = [...document.querySelectorAll('.popup')];
 
-const cardTemplate = document.querySelector('#card').content.querySelector('.card')
+const cardTemplateSelector = document.querySelector('#card');
 
 const configValidation = {
   formSelector: '.edit-form',
@@ -97,7 +97,7 @@ const handleSubmitAddCardForm = (event) => {
 
 /* СОЗДАНИЕ КАРТОЧКИ */
 const createCard = (cardData, handleImageClick) => {
-  return new Card(cardData, cardTemplate, handleImageClick).generateCard()
+  return new Card(cardData, cardTemplateSelector, handleImageClick).generateCard()
 }
 /* ДОБАВЛЕНИЕ КАРТОЧКИ В РАЗМЕТКУ */
 const renderCard = (cardData, section) => {

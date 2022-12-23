@@ -1,14 +1,17 @@
 /* CARD-CLASS */
 class Card {
-  constructor(cardData, template, handleImageClick) {
-    this._template =  template
+  constructor(cardData, templateSelector, handleImageClick) {
+    this._templateSelector = templateSelector
     this._handleImageClick = handleImageClick
     this._name = cardData.name
     this._link = cardData.link
   }
 
   _getTemplate() {
-    return this._template.cloneNode(true)
+    return this._templateSelector
+      .content
+      .querySelector('.card')
+      .cloneNode(true)
   }
 
   generateCard() {
