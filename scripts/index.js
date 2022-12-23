@@ -32,7 +32,7 @@ const cardsSection = document.querySelector('.cards'),
 /* ПОПАПЫ */
 const popupList = [...document.querySelectorAll('.popup')];
 
-const cardTemplateSelector = document.querySelector('#card');
+const cardTemplateSelector = '#card';
 
 const configValidation = {
   formSelector: '.edit-form',

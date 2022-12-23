@@ -8,7 +8,8 @@ class Card {
   }
 
   _getTemplate() {
-    return this._templateSelector
+    return document
+      .querySelector(this._templateSelector)
       .content
       .querySelector('.card')
       .cloneNode(true)
