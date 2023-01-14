@@ -2,7 +2,7 @@
 import {initialCards} from './initialCards.js';
 import {Card} from "./Card.js";
 import {FormValidator} from "./FormValidator.js";
-
+import {Section} from './Section.js'
 /*** CONST`S ***/
 
 /* ПОЛЯ ПРОФИЛЯ НА СТРАНИЦЕ */
@@ -25,7 +25,7 @@ const imageViewPopup = document.querySelector('#image-view-popup'),
   imageViewTitle = document.querySelector('.image-view__title'),
   imageViewCloseButton = document.querySelector('#image-view-button-close');
 /* ДАННЫЕ КАРТОЧЕК */
-const cardsSection = document.querySelector('.cards'),
+const cardsSection = '.cards',
   newCardForm = popupNewCard.querySelector('#add-card-form'),
   placeInput = popupNewCard.querySelector('.edit-form__field_get_place-name'),                //значения поля ввода названия места
   linkInput = popupNewCard.querySelector('.edit-form__field_get_link');
@@ -88,10 +88,17 @@ const handleImageClick = (link, name) => {
   openPopup(imageViewPopup);
 }
 
+
+
+/* ФУНКЦИЯ ОТРИСОВКИ КАЖДОГО ОТДЕЛЬНОГО ЭЛЕМЕНТА */
+const renderer = (item) => renderInitialCards.addItem(createCard(item))
+
 /* СОЗДАНИЕ НОВОЙ КАРТОЧКИ */
 const handleSubmitAddCardForm = (event) => {
   event.preventDefault();
-  renderCard({name: placeInput.value, link: linkInput.value}, cardsSection);
+  const renderUserCard = new Section(
+    { items: [{name: placeInput.value, link: linkInput.value}], renderer}, cardsSection)
+  renderUserCard.renderItem();
   closePopup(popupNewCard);
 }
 
@@ -99,15 +106,20 @@ const handleSubmitAddCardForm = (event) => {
 const createCard = (cardData, handleImageClick) => {
   return new Card(cardData, cardTemplateSelector, handleImageClick).generateCard()
 }
-/* ДОБАВЛЕНИЕ КАРТОЧКИ В РАЗМЕТКУ */
-const renderCard = (cardData, section) => {
-  section.prepend(createCard(cardData,handleImageClick));
-}
+/* ОТРИСОВКА ПРЕДЗАГРУЖЕННЫХ КАРТОЧЕК */
+const renderInitialCards = new Section(
+  { items: initialCards, renderer}, cardsSection)
+renderInitialCards.renderItem();
 
-/* ПЕРЕБОР МАССИВА ПРЕДЗАГРУЖЕННЫХ КАРТОЧКЕК И ОТРИСОВКА В РАЗМЕТКУ */
-initialCards.reverse().forEach((initialCardData) => {
-  renderCard(initialCardData, cardsSection)
-})
+
+
+
+
+
+
+
+
+
 
 /* СОЗДАНИЕ ЭКЗЕМПЛЯРА КЛАССА ВАЛИДАЦИИ ДЛЯ КАЖДОЙ ПРОВЕРЯЕМОЙ ФОРМЫ */
 const profileFormValidation = new FormValidator(configValidation, profileEditForm);
