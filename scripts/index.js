@@ -3,6 +3,8 @@ import {initialCards} from './initialCards.js';
 import {Card} from "./Card.js";
 import {FormValidator} from "./FormValidator.js";
 import {Section} from './Section.js'
+
+import {Popup} from './Popup.js';
 /*** CONST`S ***/
 
 /* ПОЛЯ ПРОФИЛЯ НА СТРАНИЦЕ */
@@ -44,6 +46,11 @@ const configValidation = {
 }
 
 /*** FUNCTIONS ***/
+const popupSelector = '.popup'
+const imagePopupSelector = '.image-view'
+const newCardPopup = '.add-card-popup'
+
+// const openPopup = new Popup(popupSelector)
 
 function openPopup(targetPopup) {
   targetPopup.classList.add('popup_opened');
@@ -54,6 +61,10 @@ function closePopup(targetPopup) {
   targetPopup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupByEscKey);
 }
+
+
+
+
 
 /* ОТПРАВКА ДАННЫХ, ПОЛУЧЕННЫХ В ФОРМЕ РЕДАКТИРОВАНИЯ ПРОФИЛЯ */
 function handleProfileEditFormSubmitData(evt) {
