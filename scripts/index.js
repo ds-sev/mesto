@@ -23,8 +23,8 @@ const buttonNewCard = document.querySelector('.profile__button-add'),           
   popupNewCard = document.querySelector('#add-card-popup'),                                   //форма добавления нового места
   cardPopupButtonClose = document.querySelector('#add-card-form-button-close');               //кнопка закрытия формы добавления нового места
 /* ПРОСМОТР ИЗОБРАЖЕНИЯ */
-const imageViewPopup = document.querySelector('#image-view-popup'),
-  imageViewItem = document.querySelector('.image-view__item'),
+// const imageViewPopup = document.querySelector('#image-view-popup'),
+const  imageViewItem = document.querySelector('.image-view__item'),
   imageViewTitle = document.querySelector('.image-view__title'),
   imageViewCloseButton = document.querySelector('#image-view-button-close');
 /* ДАННЫЕ КАРТОЧЕК */
@@ -93,12 +93,9 @@ const profileEditPopupSelector = '.popup-profile-edit'
 ///popup with image
 /* ОТКРЫТИЕ ПОЛНОЭКРАННОГО ИЗОБРАЖЕНИЯ */
 const handleImageClick = (link, name) => {
-  // imageViewItem.src = link;
-  // imageViewTitle.textContent = name;
-  // imageViewItem.alt = `На фото: ${name}`;
-  const imagePopup = new PopupWithImage(link, name)
-  imagePopup.open()
-  imagePopup.setEventsListeners()
+  const imageViewPopup = new PopupWithImage(imagePopupSelector)
+  imageViewPopup.open(link, name)
+  imageViewPopup.setEventsListeners()
 }
 
 

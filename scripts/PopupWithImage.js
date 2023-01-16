@@ -5,16 +5,13 @@ import {Popup} from './Popup.js';
 // картинку с src изображения и подписью к картинке.
 
 export class PopupWithImage extends Popup {
-  constructor(link, name) {
-    this._imageLink = link
-    this._imageName = name
-
-
+  constructor(popupSelector) {
+    super(popupSelector);
   }
-  // imageViewItem.src = link;
-  // imageViewTitle.textContent = name;
-  // imageViewItem.alt = `На фото: ${name}`;
   open(link, name) {
-    super.open();
+    document.querySelector('.image-view__item').src = link
+    document.querySelector('.image-view__title').textContent = name
+    document.querySelector('.image-view__title').alt = `На фото: ${name}`
+    super.open()
   }
 }
