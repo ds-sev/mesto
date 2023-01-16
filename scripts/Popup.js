@@ -1,3 +1,4 @@
+/* ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПА */
 export class Popup {
   constructor(popupSelector) {
     this._popupSelector = popupSelector
@@ -9,12 +10,14 @@ export class Popup {
   close() {
     document.querySelector(this._popupSelector).classList.remove('popup_opened');
   }
-  _handleEscClose(e) {
-    if (e.code === 'Escape') {
+  //метод закрытия по Esc
+  _handleEscClose(evt) {
+    if (evt.code === 'Escape' && document.querySelector('.popup_opened')) {
       document.querySelector('.popup_opened').classList.remove('popup_opened');
     }
   }
-  setEventsListeners() {            //слушатель клика иконки закрытия попапа
+  //слушатель клика иконки закрытия попапа + оверлей
+  setEventsListeners() {
     document.querySelector(this._popupSelector).addEventListener('click', (evt) => {
       if (evt.target === evt.currentTarget || evt.target.classList.contains('button_type_close')) {
         this.close();
