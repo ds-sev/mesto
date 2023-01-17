@@ -47,10 +47,18 @@ const configValidation = {
   errorClass: 'edit-form__field_error_active',
 }
 
+
+
 /*** FUNCTIONS ***/
 const imagePopupSelector = '.popup-image-view'
 const newCardPopupSelector = '.popup-new-card'
 const profileEditPopupSelector = '.popup-profile-edit'
+
+
+// nameInput = document.querySelector('.edit-form__field_get_name'),                          //значения поля имени в форме
+//   jobInput = document.querySelector('.edit-form__field_get_job'),
+// userNameSelector = '.profile__name'                              //отображаемое на сайте имя
+// userAboutSelector = '.profile__about';
 
 /* ОТКРЫТИЕ ПОЛНОЭКРАННОГО ИЗОБРАЖЕНИЯ */
 const handleImageClick = (link, name) => {
@@ -82,6 +90,7 @@ newCardFormValidation.enableValidation();
 
 /* ОТКРЫТИЕ ФОРМЫ РЕДАКТИРОВАНИЯ ПРОФИЛЯ + ПЕРЕНОС ДАННЫХ СО СТРАНИЦЫ В ФОРМУ */
 profileEditButton.addEventListener('click', () => {
+  // const userInfo = new UserInfo(nam)
   nameInput.value = nameOnPage.textContent;
   jobInput.value = jobOnPage.textContent;
   profileFormValidation.resetValidation()
@@ -99,6 +108,8 @@ function handleProfileEditFormSubmitData(formData) {
 
 /* СОЗДАНИЕ НОВОЙ КАРТОЧКИ */
 const newCardPopup = new PopupWithForm(newCardPopupSelector, handleSubmitAddCardForm);
+newCardPopup.setEventsListeners()
+
 function handleSubmitAddCardForm(formData) {
   const renderUserCard = new Section(
     {items: [{name: formData.place, link: formData.link}], renderer}, cardsSection)
@@ -110,7 +121,6 @@ function handleSubmitAddCardForm(formData) {
 buttonNewCard.addEventListener('click', () => {
   newCardFormValidation.resetValidation();
   newCardPopup.open()
-  newCardPopup.setEventsListeners()
 })
 
 /* EXPORTS */
