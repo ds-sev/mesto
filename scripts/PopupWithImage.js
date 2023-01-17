@@ -1,4 +1,4 @@
-import {Popup} from './Popup.js';
+import {Popup} from './Popup.js'
 
 //Этот класс должен перезаписывать родительский метод open.
 // В методе open класса PopupWithImage нужно вставлять в попап
@@ -6,12 +6,13 @@ import {Popup} from './Popup.js';
 
 export class PopupWithImage extends Popup {
   constructor(popupSelector) {
-    super(popupSelector);
+    super(popupSelector)
   }
+
   open(link, name) {
-    document.querySelector('.image-view__item').src = link
-    document.querySelector('.image-view__title').textContent = name
-    document.querySelector('.image-view__title').alt = `На фото: ${name}`
     super.open()
+    this._popup.querySelector('.image-view__item').src = link
+    this._popup.querySelector('.image-view__item').alt = `На фото: ${name}`
+    this._popup.querySelector('.image-view__title').textContent = name
   }
 }
