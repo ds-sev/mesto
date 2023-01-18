@@ -7,6 +7,7 @@ import {Section} from './Section.js'
 import {Popup} from './Popup.js';
 import {PopupWithImage} from './PopupWithImage.js';
 import {PopupWithForm} from './PopupWithForm.js';
+import {UserInfo} from './UserInfo.js';
 /*** CONST`S ***/
 
 /* ПОЛЯ ПРОФИЛЯ НА СТРАНИЦЕ */
@@ -48,17 +49,17 @@ const configValidation = {
 }
 
 
-
 /*** FUNCTIONS ***/
 const imagePopupSelector = '.popup-image-view'
 const newCardPopupSelector = '.popup-new-card'
 const profileEditPopupSelector = '.popup-profile-edit'
 
 
-// nameInput = document.querySelector('.edit-form__field_get_name'),                          //значения поля имени в форме
-//   jobInput = document.querySelector('.edit-form__field_get_job'),
-// userNameSelector = '.profile__name'                              //отображаемое на сайте имя
-// userAboutSelector = '.profile__about';
+// const nameInput = '.edit-form__field_get_name',                          //значения поля имени в форме
+
+const userNameSelector = '.profile__name',                              //отображаемое на сайте имя
+  userAboutSelector = '.profile__about'
+
 
 /* ОТКРЫТИЕ ПОЛНОЭКРАННОГО ИЗОБРАЖЕНИЯ */
 const handleImageClick = (link, name) => {
@@ -89,25 +90,23 @@ const newCardFormValidation = new FormValidator(configValidation, newCardForm);
 newCardFormValidation.enableValidation();
 
 /* ОТКРЫТИЕ ФОРМЫ РЕДАКТИРОВАНИЯ ПРОФИЛЯ + ПЕРЕНОС ДАННЫХ СО СТРАНИЦЫ В ФОРМУ */
+const userInfo = new UserInfo(userNameSelector, userAboutSelector)
 profileEditButton.addEventListener('click', () => {
-  // const userInfo = new UserInfo(nam)
-  nameInput.value = nameOnPage.textContent;
-  jobInput.value = jobOnPage.textContent;
+  userInfo.getUserInfo()
+  nameInput.value = userInfo.getUserInfo().name
+  jobInput.value = userInfo.getUserInfo().job
   profileFormValidation.resetValidation()
-  profileEditFormPopup.open();
-  profileEditFormPopup.setEventsListeners()
+  profileEditFormPopup.open()
 })
 
-const profileEditFormPopup = new PopupWithForm(profileEditPopupSelector, handleProfileEditFormSubmitData)
-
 /* ОТПРАВКА ДАННЫХ, ПОЛУЧЕННЫХ В ФОРМЕ РЕДАКТИРОВАНИЯ ПРОФИЛЯ */
-function handleProfileEditFormSubmitData(formData) {
-  nameOnPage.textContent = formData.name;
-  jobOnPage.textContent = formData.job;
-}
+const handleProfileEditFormSubmitData = (formData) => userInfo.setUserInfo(formData)
+
+const profileEditFormPopup = new PopupWithForm(profileEditPopupSelector, handleProfileEditFormSubmitData)
+profileEditFormPopup.setEventsListeners()
 
 /* СОЗДАНИЕ НОВОЙ КАРТОЧКИ */
-const newCardPopup = new PopupWithForm(newCardPopupSelector, handleSubmitAddCardForm);
+const newCardPopup = new PopupWithForm(newCardPopupSelector, handleSubmitAddCardForm)
 newCardPopup.setEventsListeners()
 
 function handleSubmitAddCardForm(formData) {
