@@ -1,8 +1,8 @@
 /* CARD-CLASS */
 class Card {
-  constructor(cardData, templateSelector, handleImageClick) {
+  constructor(cardData, templateSelector, handleCardClick) {
     this._templateSelector = templateSelector
-    this._handleImageClick = handleImageClick
+    this._handleCardClick = handleCardClick
     this._name = cardData.name
     this._link = cardData.link
   }
@@ -41,7 +41,7 @@ class Card {
     deleteButton.addEventListener('click', () => this._remove())
     //слушатель для открытия полноэкранного изображения
     this._cardImage.addEventListener('click', () =>
-      this._handleImageClick(this._link, this._name))
+      this._handleCardClick(this._link, this._name))
   }
 }
 

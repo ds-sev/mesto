@@ -1,4 +1,4 @@
-/* ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПА */
+/* OPEN AND CLOSE POPUP */
 export class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector)
@@ -8,15 +8,16 @@ export class Popup {
     document.addEventListener('keydown', this._handleEscClose)
   }
   close() {
-    this._popup.classList.remove('popup_opened');
+    this._popup.classList.remove('popup_opened')
+    document.removeEventListener('keydown', this._handleEscClose)
   }
-  //метод закрытия по Esc
+  //close popup by press Esc-button
   _handleEscClose(evt) {
     if (evt.code === 'Escape' && document.querySelector('.popup_opened')) {
       document.querySelector('.popup_opened').classList.remove('popup_opened');
     }
   }
-  //слушатель клика иконки закрытия попапа + оверлей
+  //listener for close popup by click on close icon or click on overlay
   setEventsListeners() {
     this._popup.addEventListener('click', (evt) => {
       if (evt.target === evt.currentTarget || evt.target.classList.contains('button_type_close')) {

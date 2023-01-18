@@ -62,7 +62,7 @@ const userNameSelector = '.profile__name',                              //ото
 
 
 /* ОТКРЫТИЕ ПОЛНОЭКРАННОГО ИЗОБРАЖЕНИЯ */
-const handleImageClick = (link, name) => {
+const handleCardClick = (link, name) => {
   const imageViewPopup = new PopupWithImage(imagePopupSelector)
   imageViewPopup.open(link, name)
   imageViewPopup.setEventsListeners()
@@ -74,7 +74,7 @@ const renderer = (item) => renderInitialCards.addItem(createCard(item))
 
 /* СОЗДАНИЕ КАРТОЧКИ */
 const createCard = (cardData) => {
-  return new Card(cardData, cardTemplateSelector, handleImageClick).generateCard()
+  return new Card(cardData, cardTemplateSelector, handleCardClick).generateCard()
 }
 
 /* ОТРИСОВКА ПРЕДЗАГРУЖЕННЫХ КАРТОЧЕК */
@@ -123,4 +123,4 @@ buttonNewCard.addEventListener('click', () => {
 })
 
 /* EXPORTS */
-export {handleImageClick}
+export {handleCardClick}
