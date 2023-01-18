@@ -1,7 +1,8 @@
+/* MANAGING OF DISPLAY USER INFORMATION AT PAGE  */
 export class UserInfo {
-  constructor(userNameSelector, userAboutSelector) {
-    this._userName = document.querySelector(userNameSelector)
-    this._userJob = document.querySelector(userAboutSelector)
+  constructor(userNameOnPageSelector, userJobOnPageSelector) {
+    this._userName = document.querySelector(userNameOnPageSelector)
+    this._userJob = document.querySelector(userJobOnPageSelector)
   }
   //return object with user data. This method will be used when open form
   getUserInfo() {
