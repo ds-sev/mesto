@@ -62,15 +62,14 @@ const userNameSelector = '.profile__name',                              //ото
 
 
 /* ОТКРЫТИЕ ПОЛНОЭКРАННОГО ИЗОБРАЖЕНИЯ */
+const imageViewPopup = new PopupWithImage(imagePopupSelector)
+imageViewPopup.setEventsListeners()
 const handleCardClick = (link, name) => {
-  const imageViewPopup = new PopupWithImage(imagePopupSelector)
   imageViewPopup.open(link, name)
-  imageViewPopup.setEventsListeners()
 }
 
 /* ФУНКЦИЯ ОТРИСОВКИ КАЖДОГО ОТДЕЛЬНОГО ЭЛЕМЕНТА */
 const renderer = (item) => renderInitialCards.addItem(createCard(item))
-
 
 /* СОЗДАНИЕ КАРТОЧКИ */
 const createCard = (cardData) => {
