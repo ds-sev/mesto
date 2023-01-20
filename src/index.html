@@ -8,20 +8,20 @@
     <meta name="keywords" content="путешествия, красивые места, Россия, travel">
     <meta name="author" content="Дмитрий Литвиненко">
     <title>Mesto</title>
-    <link rel="icon" href="images/icon/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="<%=require('./images/icon/favicon.svg')%>" type="image/svg+xml">
     <link rel="alternate icon" href="images/icon/favicon.png" type="image/png">
-    <link rel="stylesheet" href="pages/index.css">
+<!--     <link rel="stylesheet" href="pages/index.css"> -->
   </head>
   <body class="body">
     <div class="page">
       <!--  HEADER  -->
       <header class="header header_position">
-        <img src="images/logo/logo.svg" alt="логотип" class="header__logo" id="start">
+        <img src="<%=require('./images/logo/logo.svg')%>" alt="логотип" class="header__logo" id="start">
       </header>
       <main class="content">
         <!--  PROFILE  -->
         <section class="profile wrapper">
-          <img src="images/profile/Cousteau.jpg" alt="Фото профиля" class="profile__photo">
+          <img src="<%=require('./images/profile/Cousteau.jpg')%>" alt="Фото профиля" class="profile__photo">
           <div class="profile__info">
             <div class="profile__name-container">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
