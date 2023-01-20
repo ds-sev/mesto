@@ -36,7 +36,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(woff|woff2|ttf|eot|otf) $/,
+        test: /\.(woff|woff2|ttf|eot|otf)$/,
         type: 'asset/resource',
         generator: {
           filename: 'fonts/[name].[hash][ext]'
@@ -45,9 +45,12 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, {
-          loader: 'css-loader'
-        }]
-      }
+          loader: 'css-loader',
+          options: { importLoaders: 1 }
+        },
+          'postcss-loader'
+        ]
+      },
       ]
   },
   plugins: [
