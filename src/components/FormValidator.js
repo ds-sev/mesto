@@ -52,6 +52,7 @@ class FormValidator {
       return !inputElement.validity.valid
     })
   }
+
   /* СБРОС ОШИБОК ПРИ ПОВТОРНОМ ОТКРЫТИИ */
   resetValidation() {
     this._inputList.forEach((input) => {

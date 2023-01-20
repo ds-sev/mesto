@@ -44,6 +44,5 @@ class Card {
       this._handleCardClick(this._link, this._name))
   }
 }
-
 /* EXPORTS */
 export {Card}
