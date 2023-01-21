@@ -24,21 +24,22 @@ class Card {
     return this._element
   }
 
-  _remove() {
+  _handleRemoveItem() {
     this._element.remove()
+    this._element = null
   }
 
-  _like() {
+  _handleLikeButtonSwitch() {
     this._likeBtn.classList.toggle('card__button-like_active')
   }
 
   _setEventListeners() {
     //переключатель лайков
     this._likeBtn = this._element.querySelector('.card__button-like')
-    this._likeBtn.addEventListener('click', () => this._like())
+    this._likeBtn.addEventListener('click', () => this._handleLikeButtonSwitch())
     //слушатель для кнопки удаления карточки
     const deleteButton = this._element.querySelector('.card__button-delete')
-    deleteButton.addEventListener('click', () => this._remove())
+    deleteButton.addEventListener('click', () => this._handleRemoveItem())
     //слушатель для открытия полноэкранного изображения
     this._cardImage.addEventListener('click', () =>
       this._handleCardClick(this._link, this._name))
