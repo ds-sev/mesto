@@ -6,12 +6,14 @@ import {Popup} from './Popup.js'
 export class PopupWithImage extends Popup {
   constructor(popupSelector) {
     super(popupSelector)
+    this._popupImageElement = this._popup.querySelector('.image-view__item')
+    this._popupImageTitleElement = this._popup.querySelector('.image-view__title')
   }
 
   open(link, name) {
     super.open()
-    this._popup.querySelector('.image-view__item').src = link
-    this._popup.querySelector('.image-view__item').alt = `На фото: ${name}`
-    this._popup.querySelector('.image-view__title').textContent = name
+    this._popupImageElement.src = link
+    this._popupImageElement.alt = `На фото: ${name}`
+    this._popupImageTitleElement.textContent = name
   }
 }
