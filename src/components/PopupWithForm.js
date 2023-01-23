@@ -4,6 +4,7 @@ export class PopupWithForm extends Popup {
   constructor(popupSelector, handleSubmitForm) {
     super(popupSelector)
     this._handleSubmitForm = handleSubmitForm
+    this._formElement = this._popup.querySelector('.edit-form')
     this._formFields = this._popup.querySelectorAll('.edit-form__field')
   }
 
@@ -21,12 +22,11 @@ export class PopupWithForm extends Popup {
       evt.preventDefault()
       this._getInputValues()
       this._handleSubmitForm(this._inputValues)
-      this.close()
     })
   }
 
   close() {
-    this._popup.querySelector('.edit-form').reset()
+    this._formElement.reset()
     super.close()
   }
 }

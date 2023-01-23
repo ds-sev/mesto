@@ -73,9 +73,10 @@ profileEditButton.addEventListener('click', () => {
 })
 
 /* ОТПРАВКА ДАННЫХ, ПОЛУЧЕННЫХ В ФОРМЕ РЕДАКТИРОВАНИЯ ПРОФИЛЯ */
-const handleProfileEditFormSubmitData = (formData) => userInfo.setUserInfo(formData)
+const handleProfileEditFormSubmitData = (formData) => { userInfo.setUserInfo(formData); profileEditFormPopup.close() }
 const profileEditFormPopup = new PopupWithForm(profileEditPopupSelector, handleProfileEditFormSubmitData)
 profileEditFormPopup.setEventsListeners()
+
 
 /* СОЗДАНИЕ НОВОЙ КАРТОЧКИ */
 const newCardPopup = new PopupWithForm(newCardPopupSelector, handleSubmitAddCardForm)
@@ -84,7 +85,8 @@ newCardPopup.setEventsListeners()
 function handleSubmitAddCardForm(formData) {
   const renderUserCard = new Section(
     {items: [{name: formData.place, link: formData.link}], renderer}, cardsSection)
-  renderUserCard.renderItem();
+  renderUserCard.renderItem()
+  newCardPopup.close()
 }
 
 /* ОТКРЫТИЕ ФОРМЫ ДОБАВЛЕНИЯ НОВОГО МЕСТА + СБРОС ДАННЫХ ИЗ ПОЛЕЙ */
