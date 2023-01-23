@@ -43,7 +43,7 @@ const handleCardClick = (link, name) => {
 }
 
 /* ФУНКЦИЯ ОТРИСОВКИ КАЖДОГО ОТДЕЛЬНОГО ЭЛЕМЕНТА */
-const renderer = (item) => renderInitialCards.addItem(createCard(item))
+const renderer = (cardData) => renderInitialCards.addCard(createCard(cardData))
 
 /* СОЗДАНИЕ КАРТОЧКИ */
 const createCard = (cardData) => {
@@ -52,8 +52,8 @@ const createCard = (cardData) => {
 
 /* ОТРИСОВКА ПРЕДЗАГРУЖЕННЫХ КАРТОЧЕК */
 const renderInitialCards = new Section(
-  {items: initialCards, renderer}, cardsSection)
-renderInitialCards.renderItem();
+  {cardsData: initialCards, renderer}, cardsSection)
+renderInitialCards.renderItems();
 
 /* СОЗДАНИЕ ЭКЗЕМПЛЯРА КЛАССА ВАЛИДАЦИИ ДЛЯ КАЖДОЙ ПРОВЕРЯЕМОЙ ФОРМЫ */
 const profileFormValidation = new FormValidator(configValidation, profileEditForm);
@@ -84,8 +84,8 @@ newCardPopup.setEventsListeners()
 
 function handleSubmitAddCardForm(formData) {
   const renderUserCard = new Section(
-    {items: [{name: formData.place, link: formData.link}], renderer}, cardsSection)
-  renderUserCard.renderItem()
+    {cardsData: [{name: formData.place, link: formData.link}], renderer}, cardsSection)
+  renderUserCard.renderItems()
   newCardPopup.close()
 }
 
