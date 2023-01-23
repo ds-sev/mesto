@@ -9,8 +9,8 @@ export class UserInfo {
     return {name: this._userName.textContent, job: this._userJob.textContent}
   }
   //receive new user data and send it to page
-  setUserInfo(formData) {
-    this._userName.textContent = formData.name
-    this._userJob.textContent = formData.job
+  setUserInfo(userData) {
+    this._userName.textContent = userData.name
+    this._userJob.textContent = userData.job
   }
 }
