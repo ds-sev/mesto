@@ -9,65 +9,64 @@ import {PopupWithForm} from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
 import * as constants from '../utils/constants.js'
 
-/* ОТКРЫТИЕ ПОЛНОЭКРАННОГО ИЗОБРАЖЕНИЯ */
+/* INSTANCES */
+const userInfo = new UserInfo(constants.userNameSelector, constants.userAboutSelector)
 const imageViewPopup = new PopupWithImage(constants.imagePopupSelector)
-imageViewPopup.setEventsListeners()
-const handleCardClick = (link, name) => {
-  imageViewPopup.open(link, name)
-}
+const profileEditFormPopup = new PopupWithForm(constants.profileEditPopupSelector, handleProfileEditFormSubmitData)
+const newCardPopup = new PopupWithForm(constants.newCardPopupSelector, handleSubmitAddCardForm)
+const profileFormValidation = new FormValidator(constants.configValidation, constants.profileEditForm);
+const newCardFormValidation = new FormValidator(constants.configValidation, constants.newCardForm);
+const cardSection = new Section({items: initialCards, renderer: renderCard}, constants.cardsSection)
+
+/* FUNCTIONS */
 
 /* ФУНКЦИЯ ОТРИСОВКИ КАЖДОГО ОТДЕЛЬНОГО ЭЛЕМЕНТА */
-const renderer = (cardData) => renderInitialCards.addCard(createCard(cardData))
+function renderCard(cardData) {
+  cardSection.addCard(createCard(cardData))
+}
 
 /* СОЗДАНИЕ КАРТОЧКИ */
 const createCard = (cardData) => {
   return new Card(cardData, constants.cardTemplateSelector, handleCardClick).generateCard()
 }
 
-/* ОТРИСОВКА ПРЕДЗАГРУЖЕННЫХ КАРТОЧЕК */
-const renderInitialCards = new Section(
-  {cardsData: initialCards, renderer}, constants.cardsSection)
-renderInitialCards.renderItems();
-
-/* СОЗДАНИЕ ЭКЗЕМПЛЯРА КЛАССА ВАЛИДАЦИИ ДЛЯ КАЖДОЙ ПРОВЕРЯЕМОЙ ФОРМЫ */
-const profileFormValidation = new FormValidator(constants.configValidation, constants.profileEditForm);
-profileFormValidation.enableValidation();
-
-const newCardFormValidation = new FormValidator(constants.configValidation, constants.newCardForm);
-newCardFormValidation.enableValidation();
-
-/* ОТКРЫТИЕ ФОРМЫ РЕДАКТИРОВАНИЯ ПРОФИЛЯ + ПЕРЕНОС ДАННЫХ СО СТРАНИЦЫ В ФОРМУ */
-const userInfo = new UserInfo(constants.userNameSelector, constants.userAboutSelector)
-constants.profileEditButton.addEventListener('click', () => {
-  userInfo.getUserInfo()
-  constants.nameInput.value = userInfo.getUserInfo().name
-  constants.jobInput.value = userInfo.getUserInfo().job
+/* OPEN USER INFO FORM, RESET VALIDATION ERRORS AND PASTE USER INFORMATION FROM PAGE TO EDITING FORM */
+function handleProfileEditFormOpen() {
+  const userData = userInfo.getUserInfo()
+  constants.nameInput.value = userData.name
+  constants.jobInput.value = userData.job
   profileFormValidation.resetValidation()
   profileEditFormPopup.open()
-})
+}
 
 /* ОТПРАВКА ДАННЫХ, ПОЛУЧЕННЫХ В ФОРМЕ РЕДАКТИРОВАНИЯ ПРОФИЛЯ */
-const handleProfileEditFormSubmitData = (formData) => { userInfo.setUserInfo(formData); profileEditFormPopup.close() }
-const profileEditFormPopup = new PopupWithForm(constants.profileEditPopupSelector, handleProfileEditFormSubmitData)
-profileEditFormPopup.setEventsListeners()
+function handleProfileEditFormSubmitData(formData) {
+  userInfo.setUserInfo(formData);
+  profileEditFormPopup.close()
+}
 
+function handleNewCardFormOpen() {
+  newCardFormValidation.resetValidation();
+  newCardPopup.open()
+}
 
-/* СОЗДАНИЕ НОВОЙ КАРТОЧКИ */
-const newCardPopup = new PopupWithForm(constants.newCardPopupSelector, handleSubmitAddCardForm)
-newCardPopup.setEventsListeners()
-
-function handleSubmitAddCardForm(formData) {
-  const renderUserCard = new Section(
-    {cardsData: [{name: formData.place, link: formData.link}], renderer}, constants.cardsSection)
-  renderUserCard.renderItems()
+/* NEW CARD RENDER */
+function handleSubmitAddCardForm(cardData) {
+  renderCard(cardData)
   newCardPopup.close()
 }
 
-/* ОТКРЫТИЕ ФОРМЫ ДОБАВЛЕНИЯ НОВОГО МЕСТА + СБРОС ДАННЫХ ИЗ ПОЛЕЙ */
-constants.buttonNewCard.addEventListener('click', () => {
-  newCardFormValidation.resetValidation();
-  newCardPopup.open()
-})
+const handleCardClick = (link, name) => imageViewPopup.open(link, name)
+
+profileFormValidation.enableValidation()
+newCardFormValidation.enableValidation()
+profileEditFormPopup.setEventsListeners()
+cardSection.renderItems();
+newCardPopup.setEventsListeners()
+imageViewPopup.setEventsListeners()
+
+constants.buttonNewCard.addEventListener('click', handleNewCardFormOpen)
+constants.profileEditButton.addEventListener('click', handleProfileEditFormOpen)
 
 /* EXPORTS */
 export {handleCardClick}
