@@ -7,9 +7,11 @@ import {Section} from '../components/Section.js'
 import {PopupWithImage} from '../components/PopupWithImage.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
-import * as constants from '../utils/constants.js'
+import * as constants from '../utils/constants.js';
 
-/* INSTANCES */
+import {api} from '../components/Api.js';
+
+/** INSTANCES */
 const userInfo = new UserInfo(constants.userNameSelector, constants.userAboutSelector)
 const imageViewPopup = new PopupWithImage(constants.imagePopupSelector)
 const profileEditFormPopup = new PopupWithForm(constants.profileEditPopupSelector, handleProfileEditFormSubmitData)
@@ -18,9 +20,39 @@ const profileFormValidation = new FormValidator(constants.configValidation, cons
 const newCardFormValidation = new FormValidator(constants.configValidation, constants.newCardForm);
 const cardSection = new Section({items: initialCards, renderer: renderCard}, constants.cardsSection)
 
-/* FUNCTIONS */
 
-/* ФУНКЦИЯ ОТРИСОВКИ КАЖДОГО ОТДЕЛЬНОГО ЭЛЕМЕНТА */
+
+
+
+
+
+
+
+
+
+// const cardSection = new Section({items: api.getInitialCards()., renderer: renderCard}, constants.cardsSection)
+
+console.log(api.getInitialCards()
+  .then(result => console.log(result)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** FUNCTIONS */
+
+/** ФУНКЦИЯ ОТРИСОВКИ КАЖДОГО ОТДЕЛЬНОГО ЭЛЕМЕНТА */
 function renderCard(cardData) {
   cardSection.addCard(createCard(cardData))
 }
@@ -67,6 +99,20 @@ imageViewPopup.setEventsListeners()
 
 constants.buttonNewCard.addEventListener('click', handleNewCardFormOpen)
 constants.profileEditButton.addEventListener('click', handleProfileEditFormOpen)
+
+
+
+
+
+///////////////////////////////////
+
+export const name = document.querySelector('.profile__name')
+export const about = document.querySelector('.profile__about')
+export const avatar = document.querySelector('.profile__photo')
+
+
+
+
 
 /* EXPORTS */
 export {handleCardClick}

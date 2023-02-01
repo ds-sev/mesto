@@ -3,7 +3,7 @@ class Card {
   constructor(cardData, templateSelector, handleCardClick) {
     this._templateSelector = templateSelector
     this._handleCardClick = handleCardClick
-    this._place = cardData.place
+    this._place = cardData.name
     this._link = cardData.link
   }
 
