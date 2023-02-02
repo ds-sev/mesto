@@ -3,13 +3,14 @@ import {name, about, avatar} from '../pages';
 
 
 export class Api {
+  constructor({baseUrl, headers}) {
+    this._baseUrl = baseUrl
+    this._headers = headers
+  }
 
   getUserInfo() {
-      fetch('https://mesto.nomoreparties.co/v1/cohort-59/users/me/', {
-        headers: {
-          authorization: 'c4ab66aa-531d-4641-bb6a-e0dfe4dabae8',
-          'Content-Type': 'application/json',
-        },
+      fetch(`${this._baseUrl}/users/me/`, {
+        headers: this._headers
       })
         .then(res => {
           if (res.ok) {
@@ -23,17 +24,11 @@ export class Api {
             about.textContent = result.about,
             avatar.src = result.avatar
         })
-
   }
 
-
   getInitialCards() {
-
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-59/cards/', {
-      headers: {
-        authorization: 'c4ab66aa-531d-4641-bb6a-e0dfe4dabae8',
-        'Content-Type': 'application/json',
-      },
+    return fetch(`${this._baseUrl}/cards/`, {
+      headers: this._headers
     })
       .then(res => {
         if (res.ok) {
@@ -42,14 +37,29 @@ export class Api {
           return Promise.reject(`Ошибка: ${res.status}`)
         }
       })
-
-
-      // .then((cards) => {
-      //   console.log(cards)
-      //
-      // });
   }
+
+  setUserInfo(newData) {
+    fetch(`${this._baseUrl}/users/me/`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: newData.name,
+        about: newData.job
+
+      })
+
+    })
+      .then(r => console.log(r))
+       // .then(res => console.log(res.status));
+
+
+  }
+
+
 }
+
+
 
 
 
@@ -60,9 +70,15 @@ export class Api {
 //     'Content-Type': 'application/json',
 //   },
 // })
-export const api = new Api
+export const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-59',
+  headers: {authorization: 'c4ab66aa-531d-4641-bb6a-e0dfe4dabae8',
+    'Content-Type': 'application/json'
+  }
+})
 
 api.getUserInfo()
+
 
 
 

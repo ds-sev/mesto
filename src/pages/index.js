@@ -21,7 +21,9 @@ const newCardFormValidation = new FormValidator(constants.configValidation, cons
 const cardSection = new Section(constants.cardsSection)
 
 // add cards array from server to page
-api.getInitialCards().then(data => data.forEach(item => renderCard(item)))
+api.getInitialCards()
+  .then(data => data.forEach(item => renderCard(item)))
+  .catch(err => console.log(err))
 
 /** FUNCTIONS */
 
@@ -45,10 +47,29 @@ function handleProfileEditFormOpen() {
 }
 
 /* ОТПРАВКА ДАННЫХ, ПОЛУЧЕННЫХ В ФОРМЕ РЕДАКТИРОВАНИЯ ПРОФИЛЯ */
+// function handleProfileEditFormSubmitData(formData) {
+//   userInfo.setUserInfo(formData);
+//   profileEditFormPopup.close()
+// }
+
+
+
+// send edited user info to server
 function handleProfileEditFormSubmitData(formData) {
+  api.setUserInfo(formData)
   userInfo.setUserInfo(formData);
   profileEditFormPopup.close()
 }
+
+
+
+
+
+
+
+
+
+
 
 function handleNewCardFormOpen() {
   newCardFormValidation.resetValidation();
@@ -82,6 +103,8 @@ constants.profileEditButton.addEventListener('click', handleProfileEditFormOpen)
 export const name = document.querySelector('.profile__name')
 export const about = document.querySelector('.profile__about')
 export const avatar = document.querySelector('.profile__photo')
+
+
 
 
 
