@@ -1,6 +1,6 @@
 /* IMPORTS */
 import './index.css';
-import {initialCards} from '../utils/constants.js';
+// import {initialCards} from '../utils/constants.js';
 import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
 import {Section} from '../components/Section.js'
@@ -18,37 +18,10 @@ const profileEditFormPopup = new PopupWithForm(constants.profileEditPopupSelecto
 const newCardPopup = new PopupWithForm(constants.newCardPopupSelector, handleSubmitAddCardForm)
 const profileFormValidation = new FormValidator(constants.configValidation, constants.profileEditForm);
 const newCardFormValidation = new FormValidator(constants.configValidation, constants.newCardForm);
-const cardSection = new Section({items: initialCards, renderer: renderCard}, constants.cardsSection)
+const cardSection = new Section(constants.cardsSection)
 
-
-
-
-
-
-
-
-
-
-
-// const cardSection = new Section({items: api.getInitialCards()., renderer: renderCard}, constants.cardsSection)
-
-console.log(api.getInitialCards()
-  .then(result => console.log(result)))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// add cards array from server to page
+api.getInitialCards().then(data => data.forEach(item => renderCard(item)))
 
 /** FUNCTIONS */
 
@@ -93,7 +66,7 @@ const handleCardClick = (link, name) => imageViewPopup.open(link, name)
 profileFormValidation.enableValidation()
 newCardFormValidation.enableValidation()
 profileEditFormPopup.setEventsListeners()
-cardSection.renderItems();
+// cardSection.renderItems();
 newCardPopup.setEventsListeners()
 imageViewPopup.setEventsListeners()
 

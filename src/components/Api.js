@@ -1,10 +1,8 @@
 /** REQUESTS TO THE SERVER **/
-import {name, about, avatar} from '../pages/index.js';
+import {name, about, avatar} from '../pages';
 
 
 export class Api {
-
-
 
   getUserInfo() {
       fetch('https://mesto.nomoreparties.co/v1/cohort-59/users/me/', {
@@ -20,16 +18,16 @@ export class Api {
             return Promise.reject(`Ошибка: ${res.status}`)
           }
         })
+        .then((result) => {
+          name.textContent = result.name,
+            about.textContent = result.about,
+            avatar.src = result.avatar
+        })
 
-      .then((result) => {
-        name.textContent = result.name,
-          about.textContent = result.about,
-          avatar.src = result.avatar
-      });
   }
 
 
-  getInitialCards(result) {
+  getInitialCards() {
 
     return fetch('https://mesto.nomoreparties.co/v1/cohort-59/cards/', {
       headers: {
@@ -45,12 +43,14 @@ export class Api {
         }
       })
 
-      .then((result) => {
-        return result
 
-      });
+      // .then((cards) => {
+      //   console.log(cards)
+      //
+      // });
   }
 }
+
 
 
 // export const api = new Api({
@@ -61,6 +61,14 @@ export class Api {
 //   },
 // })
 export const api = new Api
+
+api.getUserInfo()
+
+
+
+// api.getInitialCards()
+
+
 
 // fetch('https://mesto.nomoreparties.co/v1/cohort-59/users/me/', {
 //   headers: {
@@ -86,6 +94,6 @@ export const api = new Api
 // api.getUserInfo()
 
 
-api.getUserInfo()
+
 
 // api.getInitialCards()
