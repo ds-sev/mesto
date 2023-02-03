@@ -97,7 +97,10 @@
         background-size: cover"></div>
         <button class="card__button-delete" id="card-button-delete" type="button" aria-label="Удалить карточку"></button>
         <div class="card__info"><h2 class="card__title"></h2>
-          <button class="card__button-like" id="card__button-like" type="button" aria-label="Нравится"></button>
+          <div class="likes-container">
+            <button class="likes-container__button" id="card__button-like" type="button" aria-label="Нравится"></button>
+            <p class="likes-container__counter">-</p>
+          </div>
         </div>
       </div>
     </template>

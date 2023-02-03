@@ -25,7 +25,7 @@ api.getInitialCards()
   .then(cardsData => cardsData.reverse().forEach(cardData => renderCard(cardData)))
 
 api.getInitialCards()
-  .then(cardsData => console.log(cardsData))
+  .then(cardsData => console.log(cardsData[25].likes))
 
 /** FUNCTIONS */
 

@@ -35,7 +35,7 @@ class Card {
 
   _setEventListeners() {
     //переключатель лайков
-    this._likeBtn = this._element.querySelector('.card__button-like')
+    this._likeBtn = this._element.querySelector('.likes-container__button')
     this._likeBtn.addEventListener('click', () => this._handleLikeButtonSwitch())
     //слушатель для кнопки удаления карточки
     const deleteButton = this._element.querySelector('.card__button-delete')
