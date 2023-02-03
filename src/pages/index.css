@@ -51,11 +51,16 @@
 @import url('../blocks/popup/popup.css');
 @import url('../blocks/popup/_opened/popup_opened.css');
 @import url('../blocks/popup/__container/popup__container.css');
+@import url('../blocks/popup/__container/_small/popup__container_small.css');
+
+
+
 
 /*=====PROFILE EDIT-FORM=====*/
 
 @import url('../blocks/edit-form/edit-form.css');
 @import url('../blocks/edit-form/__title/edit-form__title.css');
+@import url('../blocks/edit-form/__title/_small-margin-bottom/edit-form__title_small-margin-bottom.css');
 @import url('../blocks/edit-form/__fields/edit-form__fields.css');
 @import url('../blocks/edit-form/__field/edit-form__field.css');
 @import url('../blocks/edit-form/__field-error/edit-form__field-error.css');
@@ -69,3 +74,6 @@
 @import url('../blocks/popup/_theme/_dark/popup_theme_dark.css');
 @import url('../blocks/image-view/__item/image-view__item.css');
 @import url('../blocks/image-view/__title/image-view__title.css');
+
+
+
