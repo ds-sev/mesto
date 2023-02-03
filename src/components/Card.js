@@ -3,7 +3,7 @@ class Card {
   constructor(cardData, templateSelector, handleCardClick) {
     this._templateSelector = templateSelector
     this._handleCardClick = handleCardClick
-    this._place = cardData.name
+    this._name = cardData.name
     this._link = cardData.link
   }
 
@@ -19,7 +19,7 @@ class Card {
     this._element = this._getTemplate()
     this._cardImage = this._element.querySelector('.card__photo-container')
     this._cardImage.style.backgroundImage = `url(${this._link}`
-    this._element.querySelector('.card__title').textContent = this._place
+    this._element.querySelector('.card__title').textContent = this._name
     this._setEventListeners()
     return this._element
   }
@@ -42,7 +42,7 @@ class Card {
     deleteButton.addEventListener('click', () => this._handleRemoveItem())
     //слушатель для открытия полноэкранного изображения
     this._cardImage.addEventListener('click', () =>
-      this._handleCardClick(this._link, this._place))
+      this._handleCardClick(this._link, this._name))
   }
 }
 /* EXPORTS */

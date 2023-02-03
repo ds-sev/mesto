@@ -2,7 +2,7 @@
 import {name, about, avatar} from '../pages';
 
 
-export class Api {
+class Api {
   constructor({baseUrl, headers}) {
     this._baseUrl = baseUrl
     this._headers = headers
@@ -20,24 +20,38 @@ export class Api {
           }
         })
         .then((result) => {
-          name.textContent = result.name,
-            about.textContent = result.about,
+          name.textContent = result.name
+            about.textContent = result.about
             avatar.src = result.avatar
         })
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards/`, {
-      headers: this._headers
+      headers: this._headers,
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          return Promise.reject(`Ошибка: ${res.status}`)
-        }
-      })
+      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+      .catch(err => console.log(err))
   }
+
+  postNewCard(newCardData) {
+    fetch(`${this._baseUrl}/cards/`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: newCardData.name,
+        link: newCardData.link
+      })
+    })
+      .catch(err => console.log(err.message))
+  }
+
+
+
+
+
+
+
 
   setUserInfo(newData) {
     fetch(`${this._baseUrl}/users/me/`, {
@@ -46,18 +60,23 @@ export class Api {
       body: JSON.stringify({
         name: newData.name,
         about: newData.job
-
       })
-
     })
-      .then(r => console.log(r))
+      .catch(err => console.log(err.message))
        // .then(res => console.log(res.status));
 
 
   }
 
 
+
+
+
+
+
 }
+
+
 
 
 

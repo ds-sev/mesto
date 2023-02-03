@@ -22,8 +22,10 @@ const cardSection = new Section(constants.cardsSection)
 
 // add cards array from server to page
 api.getInitialCards()
-  .then(data => data.forEach(item => renderCard(item)))
-  .catch(err => console.log(err))
+  .then(cardsData => cardsData.reverse().forEach(cardData => renderCard(cardData)))
+
+api.getInitialCards()
+  .then(cardsData => console.log(cardsData))
 
 /** FUNCTIONS */
 
@@ -32,10 +34,20 @@ function renderCard(cardData) {
   cardSection.addCard(createCard(cardData))
 }
 
+
+
+
+
 /* СОЗДАНИЕ КАРТОЧКИ */
 const createCard = (cardData) => {
   return new Card(cardData, constants.cardTemplateSelector, handleCardClick).generateCard()
 }
+
+
+
+
+
+
 
 /* OPEN USER INFO FORM, RESET VALIDATION ERRORS AND PASTE USER INFORMATION FROM PAGE TO EDITING FORM */
 function handleProfileEditFormOpen() {
@@ -78,7 +90,13 @@ function handleNewCardFormOpen() {
 
 /* NEW CARD RENDER */
 function handleSubmitAddCardForm(cardData) {
+  api.postNewCard(cardData)
   renderCard(cardData)
+  console.log(cardData)
+
+
+
+
   newCardPopup.close()
 }
 
