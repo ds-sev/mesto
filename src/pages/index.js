@@ -20,12 +20,26 @@ const profileFormValidation = new FormValidator(constants.configValidation, cons
 const newCardFormValidation = new FormValidator(constants.configValidation, constants.newCardForm);
 const cardSection = new Section(constants.cardsSection)
 
-// add cards array from server to page
-api.getInitialCards()
-  .then(cardsData => cardsData.reverse().forEach(cardData => renderCard(cardData)))
+// get user info from server
+api.getUserInfo()
+  .then((result) => {
+    name.textContent = result.name
+    about.textContent = result.about
+    avatar.src = result.avatar
+    userId.textContent = result._id
+  })
 
+// add cards array from server to page and hide del-icon for other users cards
 api.getInitialCards()
-  .then(cardsData => console.log(cardsData[25].likes))
+  .then(cardsData => cardsData.reverse().forEach((cardData) => {
+    renderCard(cardData)
+    if (cardData.owner._id !== userId.textContent) {
+      document.querySelector('.card__button-delete').classList.add('card__button-delete_hide')
+    }
+  })
+)
+
+
 
 /** FUNCTIONS */
 
@@ -92,7 +106,7 @@ function handleNewCardFormOpen() {
 function handleSubmitAddCardForm(cardData) {
   api.postNewCard(cardData)
   renderCard(cardData)
-  console.log(cardData)
+  // console.log(cardData)
 
 
 
@@ -121,6 +135,10 @@ constants.profileEditButton.addEventListener('click', handleProfileEditFormOpen)
 export const name = document.querySelector('.profile__name')
 export const about = document.querySelector('.profile__about')
 export const avatar = document.querySelector('.profile__photo')
+export const userId = document.querySelector('.profile__id')
+
+
+
 
 
 

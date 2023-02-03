@@ -1,5 +1,5 @@
 /** REQUESTS TO THE SERVER **/
-import {name, about, avatar} from '../pages';
+import {name, about, avatar, userId} from '../pages';
 
 
 class Api {
@@ -9,21 +9,18 @@ class Api {
   }
 
   getUserInfo() {
-      fetch(`${this._baseUrl}/users/me/`, {
-        headers: this._headers
+    return fetch(`${this._baseUrl}/users/me/`, {
+      headers: this._headers,
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          return Promise.reject(`Ошибка: ${res.status}`)
+        }
       })
-        .then(res => {
-          if (res.ok) {
-            return res.json()
-          } else {
-            return Promise.reject(`Ошибка: ${res.status}`)
-          }
-        })
-        .then((result) => {
-          name.textContent = result.name
-            about.textContent = result.about
-            avatar.src = result.avatar
-        })
+      .catch(err => console.log(err))
+
   }
 
   getInitialCards() {
@@ -96,7 +93,11 @@ export const api = new Api({
   }
 })
 
-api.getUserInfo()
+// let userId = 123
+
+
+
+
 
 
 

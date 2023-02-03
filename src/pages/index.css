@@ -76,4 +76,10 @@
 @import url('../blocks/image-view/__title/image-view__title.css');
 
 
+.card__button-delete_hide {
+  display: none;
+}
 
+.profile__id {
+  display: none;
+}
