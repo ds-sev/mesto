@@ -1,10 +1,16 @@
 /* CARD-CLASS */
 class Card {
-  constructor(cardData, templateSelector, handleCardClick) {
+  constructor(cardData, templateSelector, handleCardClick, { handleCardDelete }) {
     this._templateSelector = templateSelector
     this._handleCardClick = handleCardClick
+    this._card = cardData
     this._name = cardData.name
     this._link = cardData.link
+
+    // this._cardId = cardData._id
+
+
+    this._handleCardDelete = handleCardDelete
   }
 
   _getTemplate() {
@@ -21,10 +27,11 @@ class Card {
     this._cardImage.style.backgroundImage = `url(${this._link}`
     this._element.querySelector('.card__title').textContent = this._name
     this._setEventListeners()
+    // this._card._id = 'fffggg999'
     return this._element
   }
 
-  _handleRemoveItem() {
+  handleRemoveItem = () => {
     this._element.remove()
     this._element = null
   }
@@ -39,7 +46,9 @@ class Card {
     this._likeBtn.addEventListener('click', () => this._handleLikeButtonSwitch())
     //слушатель для кнопки удаления карточки
     const deleteButton = this._element.querySelector('.card__button-delete')
-    deleteButton.addEventListener('click', () => this._handleRemoveItem())
+    deleteButton.addEventListener('click', () => this._handleCardDelete(this._card))
+
+
     //слушатель для открытия полноэкранного изображения
     this._cardImage.addEventListener('click', () =>
       this._handleCardClick(this._link, this._name))

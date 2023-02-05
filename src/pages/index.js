@@ -11,6 +11,10 @@ import * as constants from '../utils/constants.js';
 
 import {api} from '../components/Api.js';
 
+import {PopupWithConfirmation} from '../components/PopupWithConfirmation.js';
+import {cardsSection} from '../utils/constants.js';
+
+
 /** INSTANCES */
 const userInfo = new UserInfo(constants.userNameSelector, constants.userAboutSelector)
 const imageViewPopup = new PopupWithImage(constants.imagePopupSelector)
@@ -18,7 +22,9 @@ const profileEditFormPopup = new PopupWithForm(constants.profileEditPopupSelecto
 const newCardPopup = new PopupWithForm(constants.newCardPopupSelector, handleSubmitAddCardForm)
 const profileFormValidation = new FormValidator(constants.configValidation, constants.profileEditForm);
 const newCardFormValidation = new FormValidator(constants.configValidation, constants.newCardForm);
-const cardSection = new Section(constants.cardsSection)
+
+
+const confirmationPopupSelector = '.popup-del-card'
 
 // get user info from server
 api.getUserInfo()
@@ -31,31 +37,84 @@ api.getUserInfo()
 
 // add cards array from server to page and hide del-icon for other users cards
 api.getInitialCards()
-  .then(cardsData => cardsData.reverse().forEach((cardData) => {
-    renderCard(cardData)
-    if (cardData.owner._id !== userId.textContent) {
-      document.querySelector('.card__button-delete').classList.add('card__button-delete_hide')
-    }
-  })
-)
-
-
+  .then(cardsData => cardSection.renderItems(cardsData))
+  .catch(err => console.log(err))
 
 /** FUNCTIONS */
 
 /** ФУНКЦИЯ ОТРИСОВКИ КАЖДОГО ОТДЕЛЬНОГО ЭЛЕМЕНТА */
-function renderCard(cardData) {
+
+
+const renderCard = (cardData) => {
   cardSection.addCard(createCard(cardData))
+}
+const cardSection = new Section(constants.cardsSection, renderCard)
+
+
+const createCard = (cardData) => {
+  const card =  new Card(cardData, constants.cardTemplateSelector, handleCardClick,
+    {
+      handleCardDelete: (cardToDel) => {
+        deleteCardConfirmation.open()
+        deleteCardConfirmation.handleSubmitConfirmation(() => {
+          console.log(cardToDel)
+          api.deleteCard(cardData._id)
+            // .then(() => console.log(cardData))
+            .then(() => {
+              card.handleRemoveItem()
+              deleteCardConfirmation.close()
+            })
+            .catch(err => console.log(err))
+        })
+
+      }
+    })
+    return card.generateCard()
 }
 
 
 
+
+
+// const handleCardDelete = (cardData) => {
+//   deleteCardConfirmation.open()
+//   deleteCardConfirmation.handleSubmitConfirmation(() => {
+//     console.log(cardData)
+//     api.deleteCard(cardData._id)
+//       .then(() => console.log(cardData))
+//       .then(() => card.handleRemoveItem())
+//       .then(() => deleteCardConfirmation.close())
+//   })
+// }
+
+
+
+// api.deleteCard(cardData)
+//   .then(() => card.handleRemoveItem)
+
+//
+// const handleConfirm = (card) => {
+//   const initialCard = card
+// }
+
+
+
+
+
+
+
+
+//
+const deleteCardConfirmation = new PopupWithConfirmation(confirmationPopupSelector)
+//
+// const deleteButton = document.querySelector('.card__button-delete')
+// // deleteButton.addEventListener('click', () => console.log(';bjnj'))
+
+deleteCardConfirmation.setEventsListeners()
 
 
 /* СОЗДАНИЕ КАРТОЧКИ */
-const createCard = (cardData) => {
-  return new Card(cardData, constants.cardTemplateSelector, handleCardClick).generateCard()
-}
+
 
 
 
@@ -106,12 +165,9 @@ function handleNewCardFormOpen() {
 function handleSubmitAddCardForm(cardData) {
   api.postNewCard(cardData)
   renderCard(cardData)
-  // console.log(cardData)
-
-
-
-
   newCardPopup.close()
+  api.getInitialCards()
+    .catch(err => console.log(err))
 }
 
 const handleCardClick = (link, name) => imageViewPopup.open(link, name)

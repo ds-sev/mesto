@@ -20,7 +20,18 @@ class Api {
         }
       })
       .catch(err => console.log(err))
+  }
 
+  setUserInfo(newData) {
+    fetch(`${this._baseUrl}/users/me/`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: newData.name,
+        about: newData.job
+      })
+    })
+      .catch(err => console.log(err.message))
   }
 
   getInitialCards() {
@@ -43,33 +54,17 @@ class Api {
       .catch(err => console.log(err.message))
   }
 
-
-
-
-
-
-
-
-  setUserInfo(newData) {
-    fetch(`${this._baseUrl}/users/me/`, {
-      method: 'PATCH',
-      headers: this._headers,
-      body: JSON.stringify({
-        name: newData.name,
-        about: newData.job
-      })
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: 'DELETE',
+      headers: this._headers
     })
-      .catch(err => console.log(err.message))
-       // .then(res => console.log(res.status));
-
-
+      .then(res => res.ok ? res.json() : Promise.reject())
   }
 
-
-
-
-
-
+  // getNewCardData(cardData) {
+  //   fetch(`${this._baseUrl}/cards/${cardId}`,
+  // }
 
 }
 
@@ -96,7 +91,8 @@ export const api = new Api({
 // let userId = 123
 
 
-
+api.getInitialCards().then(res =>
+  console.log(res))
 
 
 
