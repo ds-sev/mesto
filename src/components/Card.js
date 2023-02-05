@@ -33,6 +33,7 @@ class Card {
 
   handleRemoveItem = () => {
     this._element.remove()
+    console.log(this._element)
     this._element = null
   }
 

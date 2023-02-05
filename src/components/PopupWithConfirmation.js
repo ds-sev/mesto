@@ -1,4 +1,5 @@
 import {Popup} from './Popup.js';
+import {api} from './Api';
 
 export class PopupWithConfirmation extends Popup {
   constructor(popupSelector) {
@@ -8,6 +9,8 @@ export class PopupWithConfirmation extends Popup {
   }
   open() {
     super.open();
+
+
 
   }
 
@@ -30,7 +33,6 @@ export class PopupWithConfirmation extends Popup {
     super.setEventsListeners();
     this._popup.addEventListener('submit', (evt) => {
       evt.preventDefault()
-      // console.log(this._card)
       this._handleSubmitConfirmation()
     })
   }

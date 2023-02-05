@@ -57,14 +57,15 @@ const createCard = (cardData) => {
       handleCardDelete: (cardToDel) => {
         deleteCardConfirmation.open()
         deleteCardConfirmation.handleSubmitConfirmation(() => {
+
           console.log(cardToDel)
           api.deleteCard(cardData._id)
-            // .then(() => console.log(cardData))
-            .then(() => {
-              card.handleRemoveItem()
-              deleteCardConfirmation.close()
-            })
             .catch(err => console.log(err))
+          // .then(() => {
+          card.handleRemoveItem()
+          deleteCardConfirmation.close()
+        // })
+
         })
 
       }
@@ -76,26 +77,6 @@ const createCard = (cardData) => {
 
 
 
-// const handleCardDelete = (cardData) => {
-//   deleteCardConfirmation.open()
-//   deleteCardConfirmation.handleSubmitConfirmation(() => {
-//     console.log(cardData)
-//     api.deleteCard(cardData._id)
-//       .then(() => console.log(cardData))
-//       .then(() => card.handleRemoveItem())
-//       .then(() => deleteCardConfirmation.close())
-//   })
-// }
-
-
-
-// api.deleteCard(cardData)
-//   .then(() => card.handleRemoveItem)
-
-//
-// const handleConfirm = (card) => {
-//   const initialCard = card
-// }
 
 
 
@@ -164,10 +145,12 @@ function handleNewCardFormOpen() {
 /* NEW CARD RENDER */
 function handleSubmitAddCardForm(cardData) {
   api.postNewCard(cardData)
-  renderCard(cardData)
-  newCardPopup.close()
-  api.getInitialCards()
-    .catch(err => console.log(err))
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      renderCard(data)
+      newCardPopup.close()
+    })
 }
 
 const handleCardClick = (link, name) => imageViewPopup.open(link, name)
