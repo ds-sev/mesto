@@ -91,8 +91,7 @@ export const api = new Api({
 // let userId = 123
 
 
-api.getInitialCards().then(res =>
-  console.log(res))
+
 
 
 

@@ -6,10 +6,7 @@ class Card {
     this._card = cardData
     this._name = cardData.name
     this._link = cardData.link
-
-    // this._cardId = cardData._id
-
-
+    this._likesQty = cardData.likes.length
     this._handleCardDelete = handleCardDelete
   }
 
@@ -26,8 +23,8 @@ class Card {
     this._cardImage = this._element.querySelector('.card__photo-container')
     this._cardImage.style.backgroundImage = `url(${this._link}`
     this._element.querySelector('.card__title').textContent = this._name
+    this._element.querySelector('.likes-container__counter').textContent = this._likesQty
     this._setEventListeners()
-    // this._card._id = 'fffggg999'
     return this._element
   }
 

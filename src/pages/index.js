@@ -57,20 +57,21 @@ const createCard = (cardData) => {
       handleCardDelete: (cardToDel) => {
         deleteCardConfirmation.open()
         deleteCardConfirmation.handleSubmitConfirmation(() => {
-
           console.log(cardToDel)
           api.deleteCard(cardData._id)
             .catch(err => console.log(err))
-          // .then(() => {
           card.handleRemoveItem()
           deleteCardConfirmation.close()
-        // })
-
         })
-
       }
     })
     return card.generateCard()
+}
+
+
+
+function handleCardDelete(cardToDel) {
+
 }
 
 
@@ -79,28 +80,11 @@ const createCard = (cardData) => {
 
 
 
-
-
-
-
-
-
-//
 const deleteCardConfirmation = new PopupWithConfirmation(confirmationPopupSelector)
-//
-// const deleteButton = document.querySelector('.card__button-delete')
-// // deleteButton.addEventListener('click', () => console.log(';bjnj'))
-
 deleteCardConfirmation.setEventsListeners()
 
 
 /* СОЗДАНИЕ КАРТОЧКИ */
-
-
-
-
-
-
 
 
 /* OPEN USER INFO FORM, RESET VALIDATION ERRORS AND PASTE USER INFORMATION FROM PAGE TO EDITING FORM */
@@ -113,10 +97,6 @@ function handleProfileEditFormOpen() {
 }
 
 /* ОТПРАВКА ДАННЫХ, ПОЛУЧЕННЫХ В ФОРМЕ РЕДАКТИРОВАНИЯ ПРОФИЛЯ */
-// function handleProfileEditFormSubmitData(formData) {
-//   userInfo.setUserInfo(formData);
-//   profileEditFormPopup.close()
-// }
 
 
 
@@ -126,14 +106,6 @@ function handleProfileEditFormSubmitData(formData) {
   userInfo.setUserInfo(formData);
   profileEditFormPopup.close()
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -166,9 +138,6 @@ constants.buttonNewCard.addEventListener('click', handleNewCardFormOpen)
 constants.profileEditButton.addEventListener('click', handleProfileEditFormOpen)
 
 
-
-
-
 ///////////////////////////////////
 
 export const name = document.querySelector('.profile__name')
@@ -176,12 +145,7 @@ export const about = document.querySelector('.profile__about')
 export const avatar = document.querySelector('.profile__photo')
 export const userId = document.querySelector('.profile__id')
 
-
-
-
-
-
-
+export const likesCounter = document.querySelector('.likes-container__counter')
 
 
 
