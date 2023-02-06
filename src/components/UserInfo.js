@@ -7,13 +7,17 @@ export class UserInfo {
   }
   //return object with user data. This method will be used when open form
   getUserInfo() {
-    return {
+
+ return {
       name: this._userName.textContent,
       job: this._userJob.textContent,
+      avatar: this._avatar.src
     }
+
   }
   //receive new user data and send it to page
   setUserInfo(userData) {
+    console.log(userData.about)
     this._userName.textContent = userData.name
     this._userJob.textContent = userData.about
     this._avatar.src = userData.avatar

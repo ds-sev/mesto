@@ -9,7 +9,7 @@ import {PopupWithForm} from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
 import * as constants from '../utils/constants.js';
 
-import {api} from '../components/Api.js';
+import {Api} from '../components/Api.js';
 
 import {PopupWithConfirmation} from '../components/PopupWithConfirmation.js';
 
@@ -27,6 +27,13 @@ const newCardFormValidation = new FormValidator(constants.configValidation, cons
 
 
 const confirmationPopupSelector = '.popup-del-card'
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-59',
+  headers: {authorization: 'c4ab66aa-531d-4641-bb6a-e0dfe4dabae8',
+    'Content-Type': 'application/json'
+  }
+})
 
 
 // get info about user and cards from server and render it on page
@@ -119,8 +126,12 @@ function handleProfileEditFormOpen() {
 // send edited user info to server
 function handleProfileEditFormSubmitData(formData) {
   api.setUserInfo(formData)
-  userInfo.setUserInfo(formData);
-  profileEditFormPopup.close()
+    .then(res => res.json())
+    .then(data => {
+      userInfo.setUserInfo(data)
+      profileEditFormPopup.close()
+    })
+    .catch(err => console.log(err))
 }
 
 

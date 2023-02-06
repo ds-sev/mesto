@@ -1,8 +1,5 @@
 /** REQUESTS TO THE SERVER **/
-import {name, about, avatar, userId} from '../pages';
-
-
-class Api {
+export class Api {
   constructor({baseUrl, headers}) {
     this._baseUrl = baseUrl
     this._headers = headers
@@ -23,7 +20,7 @@ class Api {
   }
 
   setUserInfo(newData) {
-    fetch(`${this._baseUrl}/users/me/`, {
+    return fetch(`${this._baseUrl}/users/me/`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -98,12 +95,7 @@ class Api {
 //     'Content-Type': 'application/json',
 //   },
 // })
-export const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-59',
-  headers: {authorization: 'c4ab66aa-531d-4641-bb6a-e0dfe4dabae8',
-    'Content-Type': 'application/json'
-  }
-})
+
 
 // let userId = 123
 
