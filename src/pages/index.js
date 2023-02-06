@@ -12,11 +12,13 @@ import * as constants from '../utils/constants.js';
 import {api} from '../components/Api.js';
 
 import {PopupWithConfirmation} from '../components/PopupWithConfirmation.js';
-import {cardsSection} from '../utils/constants.js';
+
+
+
 
 
 /** INSTANCES */
-const userInfo = new UserInfo(constants.userNameSelector, constants.userAboutSelector)
+const userInfo = new UserInfo(constants.userNameSelector, constants.userAboutSelector, constants.avatarSelector)
 const imageViewPopup = new PopupWithImage(constants.imagePopupSelector)
 const profileEditFormPopup = new PopupWithForm(constants.profileEditPopupSelector, handleProfileEditFormSubmitData)
 const newCardPopup = new PopupWithForm(constants.newCardPopupSelector, handleSubmitAddCardForm)
@@ -26,19 +28,19 @@ const newCardFormValidation = new FormValidator(constants.configValidation, cons
 
 const confirmationPopupSelector = '.popup-del-card'
 
-// get user info from server
-api.getUserInfo()
-  .then((result) => {
-    name.textContent = result.name
-    about.textContent = result.about
-    avatar.src = result.avatar
-    userId.textContent = result._id
-  })
 
-// add cards array from server to page and hide del-icon for other users cards
-api.getInitialCards()
-  .then(cardsData => cardSection.renderItems(cardsData))
+// get info about user and cards from server and render it on page
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cardsData]) => {
+    userInfo.setUserInfo(userData)
+    cardSection.renderItems(cardsData)
+  })
   .catch(err => console.log(err))
+
+
+
+
+
 
 /** FUNCTIONS */
 
@@ -51,8 +53,19 @@ const renderCard = (cardData) => {
 const cardSection = new Section(constants.cardsSection, renderCard)
 
 
+function handleCardLike(cardToLike) {
+  if (cardToLike === userId) {
+    console.log('true')
+  }
+  api.deleteLike(cardToLike)
+    .catch(err => console.log(err))
+}
+
+
+
+
 const createCard = (cardData) => {
-  const card =  new Card(cardData, constants.cardTemplateSelector, handleCardClick,
+  const card =  new Card(cardData, constants.cardTemplateSelector, handleCardClick, handleCardLike,
     {
       handleCardDelete: (cardToDel) => {
         deleteCardConfirmation.open()
@@ -67,6 +80,9 @@ const createCard = (cardData) => {
     })
     return card.generateCard()
 }
+
+
+
 
 
 
@@ -142,12 +158,12 @@ constants.profileEditButton.addEventListener('click', handleProfileEditFormOpen)
 
 export const name = document.querySelector('.profile__name')
 export const about = document.querySelector('.profile__about')
-export const avatar = document.querySelector('.profile__photo')
 export const userId = document.querySelector('.profile__id')
 
 export const likesCounter = document.querySelector('.likes-container__counter')
 
-
+api.getInitialCards()
+  .then(res => console.log(res))
 
 /* EXPORTS */
 export {handleCardClick}

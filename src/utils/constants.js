@@ -23,7 +23,8 @@ export const
   newCardPopupSelector = '.popup-new-card',
   profileEditPopupSelector = '.popup-profile-edit',
   userNameSelector = '.profile__name',
-  userAboutSelector = '.profile__about'
+  userAboutSelector = '.profile__about',
+  avatarSelector = '.profile__photo'
 
 /** INITIAL CARDS */
 export const initialCards = [

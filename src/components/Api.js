@@ -62,6 +62,23 @@ class Api {
       .then(res => res.ok ? res.json() : Promise.reject())
   }
 
+
+  putLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: 'PUT',
+      headers: this._headers
+    })
+      .then(res => res.ok ? res.json() : Promise.reject())
+  }
+
+  deleteLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: 'DELETE',
+      headers: this._headers
+    })
+      .then(res => res.ok ? res.json() : Promise.reject())
+  }
+
   // getNewCardData(cardData) {
   //   fetch(`${this._baseUrl}/cards/${cardId}`,
   // }
