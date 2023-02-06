@@ -6,6 +6,8 @@ export class UserInfo {
     this._userName = document.querySelector(userNameOnPageSelector)
     this._userJob = document.querySelector(userJobOnPageSelector)
     this._avatar = document.querySelector(avatarSelector)
+
+
     // this._userId = document.querySelector(userIdSelector)
   }
   //return object with user data. This method will be used when open form
@@ -27,7 +29,11 @@ getUserId() {
   setUserInfo(userData) {
     this._userName.textContent = userData.name
     this._userJob.textContent = userData.about
-    this._avatar.src = userData.avatar
+    // this._avatar.src = userData.avatar
+
+
+    this._avatar.style.backgroundImage = `url(${userData.avatar}`
+
     this._userId = userData._id
 
   }
