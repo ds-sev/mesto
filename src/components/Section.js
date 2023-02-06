@@ -9,9 +9,7 @@ export class Section {
   renderItems(initialCardsData) {
     initialCardsData.reverse().forEach(cardData => {
       this._renderer(cardData)
-      if (cardData.owner._id !== userId.textContent) {
-        document.querySelector('.card__button-delete').classList.add('card__button-delete_hide')
-      }
+
     })
   }
 

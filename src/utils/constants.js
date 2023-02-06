@@ -24,7 +24,10 @@ export const
   profileEditPopupSelector = '.popup-profile-edit',
   userNameSelector = '.profile__name',
   userAboutSelector = '.profile__about',
-  avatarSelector = '.profile__photo'
+  avatarSelector = '.profile__photo',
+  confirmationPopupSelector = '.popup-del-card'
+  // userIdSelector = '.profile__id'
+
 
 /** INITIAL CARDS */
 export const initialCards = [

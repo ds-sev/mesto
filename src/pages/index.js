@@ -18,7 +18,9 @@ import {PopupWithConfirmation} from '../components/PopupWithConfirmation.js';
 
 
 /** INSTANCES */
-const userInfo = new UserInfo(constants.userNameSelector, constants.userAboutSelector, constants.avatarSelector)
+const userInfo = new UserInfo(constants.userNameSelector,
+  constants.userAboutSelector,
+  constants.avatarSelector)
 const imageViewPopup = new PopupWithImage(constants.imagePopupSelector)
 const profileEditFormPopup = new PopupWithForm(constants.profileEditPopupSelector, handleProfileEditFormSubmitData)
 const newCardPopup = new PopupWithForm(constants.newCardPopupSelector, handleSubmitAddCardForm)
@@ -26,7 +28,7 @@ const profileFormValidation = new FormValidator(constants.configValidation, cons
 const newCardFormValidation = new FormValidator(constants.configValidation, constants.newCardForm);
 
 
-const confirmationPopupSelector = '.popup-del-card'
+
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-59',
@@ -41,13 +43,10 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cardsData]) => {
     userInfo.setUserInfo(userData)
     cardSection.renderItems(cardsData)
+    // console.log(userData._id)
+    // console.log(userInfo.getUserId())
   })
   .catch(err => console.log(err))
-
-
-
-
-
 
 /** FUNCTIONS */
 
@@ -60,19 +59,11 @@ const renderCard = (cardData) => {
 const cardSection = new Section(constants.cardsSection, renderCard)
 
 
-function handleCardLike(cardToLike) {
-  if (cardToLike === userId) {
-    console.log('true')
-  }
-  api.deleteLike(cardToLike)
-    .catch(err => console.log(err))
-}
-
 
 
 
 const createCard = (cardData) => {
-  const card =  new Card(cardData, constants.cardTemplateSelector, handleCardClick, handleCardLike,
+  const card =  new Card(cardData, userInfo.getUserId(), constants.cardTemplateSelector, handleCardClick,
     {
       handleCardDelete: (cardToDel) => {
         deleteCardConfirmation.open()
@@ -83,13 +74,40 @@ const createCard = (cardData) => {
           card.handleRemoveItem()
           deleteCardConfirmation.close()
         })
-      }
+      },
+    handleCardReaction: (cardToReaction) => {
+        if (card.isCardLiked() !== true) {
+          api.putLike(cardToReaction._id)
+            .then(res => {
+              card.likesCounter(res.likes)
+              // card.likesQty()
+            })
+            .catch(err => console.log(err))
+        } else {
+          api.deleteLike(cardToReaction._id)
+            .then(res => {
+              card.likesCounter(res.likes)
+              // card.likesQty()
+            })
+            .catch(err => console.log(err))
+        }
+    }
     })
     return card.generateCard()
 }
 
 
 
+// function handleCardLike(cardToLike) {
+//   api.putLike(cardToLike)
+//
+//     .catch(err => console.log(err))
+// }
+//
+// function handleCardUnlike(cardToUnlike) {
+//   api.deleteLike(cardToUnlike)
+//     .catch(err => console.log(err))
+// }
 
 
 
@@ -103,7 +121,7 @@ function handleCardDelete(cardToDel) {
 
 
 
-const deleteCardConfirmation = new PopupWithConfirmation(confirmationPopupSelector)
+const deleteCardConfirmation = new PopupWithConfirmation(constants.confirmationPopupSelector)
 deleteCardConfirmation.setEventsListeners()
 
 
@@ -146,7 +164,6 @@ function handleSubmitAddCardForm(cardData) {
   api.postNewCard(cardData)
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       renderCard(data)
       newCardPopup.close()
     })
@@ -169,12 +186,14 @@ constants.profileEditButton.addEventListener('click', handleProfileEditFormOpen)
 
 export const name = document.querySelector('.profile__name')
 export const about = document.querySelector('.profile__about')
-export const userId = document.querySelector('.profile__id')
 
 export const likesCounter = document.querySelector('.likes-container__counter')
 
-api.getInitialCards()
-  .then(res => console.log(res))
+// api.getInitialCards()
+//   .then(res => console.log(res))
 
 /* EXPORTS */
 export {handleCardClick}
+
+
+
