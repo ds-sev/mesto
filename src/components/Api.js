@@ -16,7 +16,6 @@ export class Api {
           return Promise.reject(`Ошибка: ${res.status}`)
         }
       })
-      .catch(err => console.log(err))
   }
 
   setUserInfo(newData) {
@@ -28,7 +27,6 @@ export class Api {
         about: newData.job,
       }),
     })
-      .catch(err => console.log(err.message))
   }
 
   getInitialCards() {
@@ -36,7 +34,6 @@ export class Api {
       headers: this._headers,
     })
       .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-      .catch(err => console.log(err))
   }
 
   postNewCard(newCardData) {
@@ -48,7 +45,6 @@ export class Api {
         link: newCardData.link,
       }),
     })
-      .catch(err => console.log(err.message))
   }
 
   deleteCard(cardId) {

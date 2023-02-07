@@ -3,9 +3,12 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  /*display: -webkit-box;*/
+  /*-webkit-line-clamp: 3;*/
+  /*-webkit-box-orient: vertical;*/
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  white-space: nowrap;
   overflow: hidden;
 }
 

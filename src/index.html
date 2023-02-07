@@ -23,7 +23,6 @@
           <div class="profile__photo-container">
             <div class="profile__photo"></div>
             <div class="profile__photo-hover"></div>
-            <!--               <img src="<%=require('./images/profile/Cousteau.jpg')%>" alt="Фото профиля" class="profile__photo"> -->
           </div>
           <div class="profile__info">
             <div class="profile__name-container">
@@ -101,8 +100,9 @@
           <h3 class="edit-form__title">Обновить аватар</h3>
           <fieldset class="edit-form__fields">
             <label>
-              <input type="url" id="avatar-link-input" class="edit-form__field edit-form__field_get_link" placeholder="Ссылка на изображение" name="link" required>
-              <span class="edit-form__field-error link-input-error"></span>
+              <input type="url" id="avatar-link-input" class="edit-form__field edit-form__field_get_link"
+                     placeholder="Ссылка на изображение" name="link" required>
+              <span class="edit-form__field-error avatar-link-input-error"></span>
             </label>
             <button class="edit-form__button-save button_submit button" id="save-avatar-button" type="submit">Сохранить
             </button>
