@@ -76,6 +76,17 @@ export class Api {
       .then(res => res.ok ? res.json() : Promise.reject())
   }
 
+  newAvatar(link) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: link
+      }),
+    })
+      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}. Проверьте путь к изображению`))
+  }
+
   // getNewCardData(cardData) {
   //   fetch(`${this._baseUrl}/cards/${cardId}`,
   // }

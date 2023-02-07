@@ -22,14 +22,11 @@
         <section class="profile wrapper">
 
 
-
-<div class="profile__photo-container">
-              <div class="profile__photo">
-
-              </div>
-          <div class="profile__photo_hover"></div>
-<!--               <img src="<%=require('./images/profile/Cousteau.jpg')%>" alt="Фото профиля" class="profile__photo"> -->
-</div>
+          <div class="profile__photo-container">
+            <div class="profile__photo"></div>
+            <div class="profile__photo_hover"></div>
+            <!--               <img src="<%=require('./images/profile/Cousteau.jpg')%>" alt="Фото профиля" class="profile__photo"> -->
+          </div>
 
 
 
@@ -48,7 +45,7 @@
       </main>
       <!--  FOOTER  -->
       <footer class="footer wrapper">
-        <span class="footer__copyright">&#169; 2022 Дмитрий Литвиненко</span>
+        <span class="footer__copyright">&#169; 2023 Дмитрий Литвиненко</span>
       </footer>
     </div>
     <!--  PROFILE-EDIT-POPUP  -->
@@ -107,6 +104,27 @@
         </form>
       </div>
     </div>
+
+    <!--  UPDATE AVATAR POPUP  -->
+    <div class="popup popup-update-avatar" id="update-avatar-popup">
+      <div class="popup__container popup__container_small">
+        <form class="edit-form" id="update-avatar-form" method="post" name="update avatar" novalidate>
+          <button class="button_type_close button" id="update-avatar-form-button-close" type="button"
+                  aria-label="Закрыть"></button>
+          <h3 class="edit-form__title">Обновить аватар</h3>
+          <fieldset class="edit-form__fields">
+            <label>
+              <input type="url" id="avatar-link-input" class="edit-form__field edit-form__field_get_link"
+                     placeholder="Ссылка на изображение" name="link" required>
+              <span class="edit-form__field-error link-input-error"></span>
+            </label>
+            <button class="edit-form__button-save button_submit button" id="save-avatar-button" type="submit">Сохранить
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
 
 
     <!--  OPEN-IMAGE-POPUP  -->

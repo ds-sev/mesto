@@ -5,7 +5,8 @@ export const profileEditButton = document.querySelector('.profile__button-edit')
   profileEditForm = document.querySelector('#profile-edit-form'),
   buttonNewCard = document.querySelector('.profile__button-add'),
   popupNewCard = document.querySelector('#add-card-popup'),
-  newCardForm = popupNewCard.querySelector('#add-card-form')
+  newCardForm = popupNewCard.querySelector('#add-card-form'),
+  avatarUpdateButton = document.querySelector('.profile__photo-container')
 
 /** SELECTORS */
 export const configValidation = {
@@ -25,8 +26,8 @@ export const
   userNameSelector = '.profile__name',
   userAboutSelector = '.profile__about',
   avatarSelector = '.profile__photo',
-  confirmationPopupSelector = '.popup-del-card'
-  // userIdSelector = '.profile__id'
+  confirmationPopupSelector = '.popup-del-card',
+  avatarUpdatePopupSelector = '.popup-update-avatar'
 
 
 /** INITIAL CARDS */
