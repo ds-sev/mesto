@@ -1,6 +1,9 @@
 /* CARD-CLASS */
 class Card {
-  constructor(cardData, userId, templateSelector, handleCardClick, {handleCardDelete, handleCardReaction}) {
+  constructor(cardData, userId, templateSelector, handleCardClick, {
+    handleCardDelete,
+    handleCardReaction,
+  }) {
     this._templateSelector = templateSelector
     this._handleCardClick = handleCardClick
     this._card = cardData

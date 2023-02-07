@@ -14,12 +14,14 @@ export class Popup {
     this._popup.classList.remove('popup_opened')
     document.removeEventListener('keydown', this._handleEscClose)
   }
+
   // close popup by press Esc-button
   _handleEscClose(evt) {
     if (evt.code === 'Escape') {
       this.close()
     }
   }
+
   // listener for close popup by click on close icon or click on overlay
   setEventsListeners() {
     this._popup.addEventListener('click', (evt) => {
@@ -28,6 +30,7 @@ export class Popup {
       }
     })
   }
+
 // change save button text after submit
   handleDataSending(isSending, buttonText) {
     if (isSending) {

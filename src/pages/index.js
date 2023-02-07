@@ -38,7 +38,10 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   .catch(err => console.log(err))
 
 /** FUNCTIONS */
-function renderCard(cardData) {cardSection.addCard(createCard(cardData))}
+
+function renderCard(cardData) {
+  cardSection.addCard(createCard(cardData))
+}
 
 const createCard = (cardData) => {
   const card = new Card(cardData, userInfo.getUserId(), constants.cardTemplateSelector, handleCardClick,
@@ -47,13 +50,13 @@ const createCard = (cardData) => {
         deleteCardConfirmation.open()
         deleteCardConfirmation.handleSubmitConfirmation(() => {
           deleteCardConfirmation.handleDataSending(true, 'Удаление...')
-            setTimeout(() => {
-              api.deleteCard(cardData._id)
-                .catch(err => console.log(err))
-              deleteCardConfirmation.handleDataSending(true, 'Да')
-              card.handleRemoveItem()
-              deleteCardConfirmation.close()
-            }, 500)
+          setTimeout(() => {
+            api.deleteCard(cardData._id)
+              .catch(err => console.log(err))
+            deleteCardConfirmation.handleDataSending(true, 'Да')
+            card.handleRemoveItem()
+            deleteCardConfirmation.close()
+          }, 500)
         })
       },
       handleCardReaction: (cardToReaction) => {
@@ -61,14 +64,12 @@ const createCard = (cardData) => {
           api.putLike(cardToReaction._id)
             .then(res => {
               card.likesCounter(res.likes)
-              // card.likesQty()
             })
             .catch(err => console.log(err))
         } else {
           api.deleteLike(cardToReaction._id)
             .then(res => {
               card.likesCounter(res.likes)
-              // card.likesQty()
             })
             .catch(err => console.log(err))
         }
@@ -105,18 +106,19 @@ function handleNewCardFormOpen() {
   newCardFormValidation.resetValidation();
   newCardPopup.open()
 }
+
 /* NEW CARD RENDER */
 function handleSubmitAddCardForm(cardData) {
   newCardPopup.handleDataSending(true, 'Создание...')
   setTimeout(() => {
-  api.postNewCard(cardData)
-    .then(res => res.json())
-    .then(data => {
-      renderCard(data)
-      newCardPopup.close()
-    })
-    .catch(err => console.log(err))
-    .finally(() => newCardPopup.handleDataSending(false, 'Создать'))
+    api.postNewCard(cardData)
+      .then(res => res.json())
+      .then(data => {
+        renderCard(data)
+        newCardPopup.close()
+      })
+      .catch(err => console.log(err))
+      .finally(() => newCardPopup.handleDataSending(false, 'Создать'))
   }, 300)
 }
 
@@ -124,6 +126,7 @@ const handleCardClick = (link, name) => imageViewPopup.open(link, name)
 
 // update avatar
 const handleUpdateAvatarFormOpen = () => updateAvatarForm.open()
+
 // send link to new avatar to server and view it on page if verification.ok
 function handleSubmitUpdAvatarForm(link) {
   updateAvatarForm.handleDataSending(true, 'Сохранение...')

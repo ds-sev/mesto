@@ -1,5 +1,3 @@
-import {userId} from '../pages';
-
 export class Section {
   constructor(containerSelector, renderer) {
     this._renderer = renderer
@@ -12,7 +10,6 @@ export class Section {
 
     })
   }
-
 
   addCard(element) {
     this._containerElement.prepend(element)

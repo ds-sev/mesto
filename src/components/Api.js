@@ -25,8 +25,8 @@ export class Api {
       headers: this._headers,
       body: JSON.stringify({
         name: newData.name,
-        about: newData.job
-      })
+        about: newData.job,
+      }),
     })
       .catch(err => console.log(err.message))
   }
@@ -45,8 +45,8 @@ export class Api {
       headers: this._headers,
       body: JSON.stringify({
         name: newCardData.name,
-        link: newCardData.link
-      })
+        link: newCardData.link,
+      }),
     })
       .catch(err => console.log(err.message))
   }
@@ -54,7 +54,7 @@ export class Api {
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._headers,
     })
       .then(res => res.ok ? res.json() : Promise.reject())
   }
@@ -62,7 +62,7 @@ export class Api {
   putLike(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: 'PUT',
-      headers: this._headers
+      headers: this._headers,
     })
       .then(res => res.ok ? res.json() : Promise.reject())
   }
@@ -70,7 +70,7 @@ export class Api {
   deleteLike(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._headers,
     })
       .then(res => res.ok ? res.json() : Promise.reject())
   }
@@ -80,10 +80,9 @@ export class Api {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: link
+        avatar: link,
       }),
     })
       .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}. Проверьте путь к изображению`))
   }
 }
-
