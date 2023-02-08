@@ -52,10 +52,14 @@ const createCard = (cardData) => {
         deleteCardConfirmation.handleSubmitConfirmation(() => {
           deleteCardConfirmation.handleDataSending(true, 'Удаление...')
           api.deleteCard(cardData._id)
+            .then(() => {
+              card.handleRemoveItem()
+              deleteCardConfirmation.close()
+            })
             .catch(err => console.log(err))
-          deleteCardConfirmation.handleDataSending(true, 'Да')
-          card.handleRemoveItem()
-          deleteCardConfirmation.close()
+            .finally(() => {
+              deleteCardConfirmation.handleDataSending(true, 'Да')
+            })
         })
       },
       handleCardReaction: (cardToReaction) => {
